@@ -2,9 +2,9 @@
 
 package org.nlogo.agent;
 
+import org.nlogo.core.AgentKind;
+import org.nlogo.core.AgentKindJ;
 import org.nlogo.api.AgentException;
-import org.nlogo.api.AgentKind;
-import org.nlogo.api.AgentKindJ;
 import org.nlogo.api.AgentVariableNumbers;
 import org.nlogo.api.AgentVariables;
 import org.nlogo.api.Color;
@@ -951,7 +951,7 @@ public strictfp class Turtle
       // an agent to itself, or to an agent at the exact same position.
       // Since face is nice, it just ignores the exception and doesn't change
       // the callers heading. - AZS 6/22/05
-      org.nlogo.util.Exceptions.ignore(ex);
+      org.nlogo.api.Exceptions.ignore(ex);
     }
   }
 
@@ -963,7 +963,7 @@ public strictfp class Turtle
       // an agent to itself, or to an agent at the exact same position.
       // Since face is nice, it just ignores the exception and doesn't change
       // the callers heading. - AZS 6/22/05
-      org.nlogo.util.Exceptions.ignore(ex);
+      org.nlogo.api.Exceptions.ignore(ex);
     }
   }
 

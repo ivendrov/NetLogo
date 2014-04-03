@@ -6,7 +6,7 @@ import org.nlogo.agent.AgentSet;
 import org.nlogo.api.I18N;
 import org.nlogo.api.LogoList;
 import org.nlogo.api.LogoListBuilder;
-import org.nlogo.api.Syntax;
+import org.nlogo.core.Syntax;
 import org.nlogo.nvm.ArgumentTypeException;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.EngineException;
@@ -51,7 +51,7 @@ public final strictfp class _nof
   }
 
   private LogoList randomSubset(LogoList list, int n,
-                                org.nlogo.util.MersenneTwisterFast random) {
+                                org.nlogo.api.MersenneTwisterFast random) {
     int size = list.size();
     LogoListBuilder result = new LogoListBuilder();
     int i = 0;

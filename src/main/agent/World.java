@@ -2,9 +2,9 @@
 
 package org.nlogo.agent;
 
+import org.nlogo.core.AgentKind;
+import org.nlogo.core.AgentKindJ;
 import org.nlogo.api.AgentException;
-import org.nlogo.api.AgentKind;
-import org.nlogo.api.AgentKindJ;
 import org.nlogo.api.Color;
 import org.nlogo.api.ParserServices;
 import org.nlogo.api.ImporterUser;
@@ -17,8 +17,8 @@ import org.nlogo.api.Timer;
 import org.nlogo.api.TrailDrawerInterface;
 import org.nlogo.api.ValueConstraint;
 import org.nlogo.api.WorldDimensionException;
-import org.nlogo.api.WorldDimensions;
-import org.nlogo.util.MersenneTwisterFast;
+import org.nlogo.core.WorldDimensions;
+import org.nlogo.api.MersenneTwisterFast;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -182,7 +182,7 @@ public strictfp class World
     try {
       x = topology().wrapX(x - topology().followOffsetX());
     } catch (AgentException e) {
-      org.nlogo.util.Exceptions.ignore(e);
+      org.nlogo.api.Exceptions.ignore(e);
     }
     return x;
   }
@@ -191,7 +191,7 @@ public strictfp class World
     try {
       y = topology().wrapY(y - topology().followOffsetY());
     } catch (AgentException e) {
-      org.nlogo.util.Exceptions.ignore(e);
+      org.nlogo.api.Exceptions.ignore(e);
     }
     return y;
   }
