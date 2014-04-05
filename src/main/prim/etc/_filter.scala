@@ -2,14 +2,14 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ LogoList, LogoListBuilder }
 import org.nlogo.nvm.{ ArgumentTypeException, Context, EngineException, Reporter }
 
 class _filter extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(Array(Syntax.ReporterTaskType, Syntax.ListType),
+    SyntaxJ.reporterSyntax(Array(Syntax.ReporterTaskType, Syntax.ListType),
       Syntax.ListType)
 
   def report(context: Context): LogoList = {

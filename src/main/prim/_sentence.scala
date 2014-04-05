@@ -2,14 +2,14 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ LogoList, LogoListBuilder }
 import org.nlogo.nvm.{ Context, Reporter, Pure }
 
 class _sentence extends Reporter with Pure {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.RepeatableType | Syntax.WildcardType),
       Syntax.ListType, dfault = 2, minimum = 0)
 

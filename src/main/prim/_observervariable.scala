@@ -2,13 +2,13 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.{ Syntax, AgentKind }
+import org.nlogo.core.{ Syntax, SyntaxJ, AgentKind }
 import org.nlogo.nvm.{ Reporter, Context, Reference }
 
 class _observervariable(_vn: Int) extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Syntax.WildcardType | Syntax.ReferenceType)
 
   override def toString =

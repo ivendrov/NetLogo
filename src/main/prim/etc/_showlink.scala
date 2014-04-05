@@ -3,12 +3,12 @@
 package org.nlogo.prim.etc
 
 import org.nlogo.agent.Link
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Command, Context }
 
 class _showlink extends Command {
   override def syntax =
-    Syntax.commandSyntax("---L", true)
+    SyntaxJ.commandSyntax("---L", true)
   override def perform(context: Context) {
     context.agent.asInstanceOf[Link].hidden(false)
     context.ip = next

@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.{ Syntax, AgentKind }
+import org.nlogo.core.{ Syntax, SyntaxJ, AgentKind }
 import org.nlogo.api.{ I18N, LogoException }
 import org.nlogo.agent.{ Turtle, Patch }
 import org.nlogo.nvm.{ Command, Context, EngineException }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Command, Context, EngineException }
 class _setdefaultshape extends Command {
 
   override def syntax =
-    Syntax.commandSyntax(Array(Syntax.TurtlesetType | Syntax.LinksetType,
+    SyntaxJ.commandSyntax(Array(Syntax.TurtlesetType | Syntax.LinksetType,
                                Syntax.StringType),
                          "O---")
 

@@ -15,7 +15,9 @@ class _bk extends Command with CustomAssembled {
   def let = _let
 
   override def syntax =
-    Syntax.commandSyntax(Array(Syntax.NumberType), "-T--")
+    Syntax.commandSyntax(
+      right = List(Syntax.NumberType),
+      agentClassString = "-T--")
 
   override def perform(context: Context) {
     perform_1(context, argEvalDoubleValue(context, 0))

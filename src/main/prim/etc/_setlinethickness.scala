@@ -2,12 +2,12 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Command, Context }
 
 class _setlinethickness extends Command {
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.NumberType),
       "-T--", switches = true)
   override def perform(context: Context) {

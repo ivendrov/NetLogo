@@ -2,12 +2,12 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Context, Reporter, Pure, CustomGenerated }
 
 class _or extends Reporter with Pure with CustomGenerated {
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Syntax.BooleanType,
       Array(Syntax.BooleanType),
       Syntax.BooleanType,

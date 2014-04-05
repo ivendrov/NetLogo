@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ Dump, I18N }
 import org.nlogo.agent.{ Agent, AgentSet }
 import org.nlogo.nvm.{ Reporter, Context, EngineException }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException }
 class _otherwith extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.AgentsetType, Syntax.BooleanBlockType),
       Syntax.AgentsetType,
       "OTPL", "?")

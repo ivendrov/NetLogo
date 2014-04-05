@@ -2,12 +2,12 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Command, Context, CustomAssembled, AssemblerAssistant }
 
 class _patchcode extends Command with CustomAssembled {
   override def syntax =
-    Syntax.commandSyntax("--P-", false)
+    SyntaxJ.commandSyntax("--P-", false)
   override def perform(context: Context) {
     throw new UnsupportedOperationException
   }

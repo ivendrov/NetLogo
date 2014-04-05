@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Context, Reporter }
 
 // I'm pretty sure the compiler could optimize this out of existence and the only reason we don't do
@@ -12,7 +12,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 class _task extends Reporter {
   override def syntax = {
     val anyTask = Syntax.CommandTaskType | Syntax.ReporterTaskType
-    Syntax.reporterSyntax(Array(anyTask), anyTask)
+    SyntaxJ.reporterSyntax(Array(anyTask), anyTask)
   }
   override def report(c: Context): AnyRef =
     args(0).report(c)

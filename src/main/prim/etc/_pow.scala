@@ -2,14 +2,14 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Reporter, Pure, Context }
 
 @annotation.strictfp
 class _pow extends Reporter with Pure {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       left = Syntax.NumberType,
       right = Array(Syntax.NumberType),
       ret = Syntax.NumberType,

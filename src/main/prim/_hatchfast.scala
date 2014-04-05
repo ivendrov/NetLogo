@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.agent.Turtle
 import org.nlogo.nvm.{ Command, Context }
 
@@ -11,7 +11,7 @@ import org.nlogo.nvm.{ Command, Context }
 class _hatchfast(breedName: String) extends Command {
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.NumberType), "-T--", true)
 
   override def toString =

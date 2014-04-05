@@ -8,6 +8,7 @@ import org.nlogo.agent.Turtle;
 import org.nlogo.core.AgentKindJ;
 import org.nlogo.api.I18N;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.EngineException;
 import org.nlogo.nvm.Reporter;
@@ -18,7 +19,7 @@ public final strictfp class _incone
     extends Reporter {
   @Override
   public Syntax syntax() {
-    return Syntax.reporterSyntax
+    return SyntaxJ.reporterSyntax
         (Syntax.TurtlesetType() | Syntax.PatchsetType(),          // left
             new int[]{Syntax.NumberType(), Syntax.NumberType()}, // right
             Syntax.TurtlesetType() | Syntax.PatchsetType(),          // return

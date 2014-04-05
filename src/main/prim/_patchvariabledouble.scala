@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.AgentException
 import org.nlogo.agent.{ Patch, Turtle }
 import org.nlogo.nvm.{ Reporter, Context, EngineException }
@@ -12,7 +12,7 @@ class _patchvariabledouble(private[this] var _vn: Int) extends Reporter {
   def this() = this(0)
 
   override def syntax =
-    Syntax.reporterSyntax(Syntax.NumberType, "-TP-")
+    SyntaxJ.reporterSyntax(Syntax.NumberType, "-TP-")
 
   override def toString =
     super.toString + ":" +

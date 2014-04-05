@@ -8,6 +8,7 @@ import org.nlogo.agent.Turtle;
 import org.nlogo.core.AgentKindJ;
 import org.nlogo.api.I18N;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.EngineException;
 import org.nlogo.nvm.Reporter;
 
@@ -20,7 +21,7 @@ public final strictfp class _inconenowrap
     int left = Syntax.AgentsetType();
     int[] right = {Syntax.NumberType(), Syntax.NumberType()};
     int ret = Syntax.AgentsetType();
-    return Syntax.reporterSyntax(left, right, ret, org.nlogo.core.Syntax.NormalPrecedence() + 2,
+    return SyntaxJ.reporterSyntax(left, right, ret, org.nlogo.core.Syntax.NormalPrecedence() + 2,
         false, "OTPL", "-T--");
   }
 

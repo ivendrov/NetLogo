@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ AgentException, Nobody }
 import org.nlogo.agent.Turtle
 import org.nlogo.nvm.{ Context, Reporter }
@@ -11,7 +11,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 class _patchrightandahead extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.NumberType, Syntax.NumberType),
       Syntax.PatchType, "-T--")
 

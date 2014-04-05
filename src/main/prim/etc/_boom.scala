@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 // In testing I sometimes use this as an example of an unrejiggered primitive, so don't rejigger it
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _boom extends Reporter {
   override def syntax =
-    Syntax.reporterSyntax(Syntax.WildcardType)
+    SyntaxJ.reporterSyntax(Syntax.WildcardType)
   override def report(context: Context): AnyRef =
     throw new EngineException(context, this, "boom!")
 }

@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.{ Syntax, AgentKind }
+import org.nlogo.core.{ Syntax, SyntaxJ, AgentKind }
 import org.nlogo.agent.{ Turtle, AgentSet, AgentSetBuilder }
 import org.nlogo.nvm.{ Command, Context, CustomAssembled, AssemblerAssistant }
 
@@ -11,7 +11,7 @@ class _createturtles(val breedName: String) extends Command with CustomAssembled
   def this() = this("")
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.NumberType, Syntax.CommandBlockType | Syntax.OptionalType),
       "O---", "-T--", true)
 

@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Command, Context }
 
 class _recursefast(original: _call) extends Command {
@@ -10,7 +10,7 @@ class _recursefast(original: _call) extends Command {
   token(original.token)
 
   override def syntax =
-    Syntax.commandSyntax
+    SyntaxJ.commandSyntax
 
   override def toString =
     super.toString + ":" + offset

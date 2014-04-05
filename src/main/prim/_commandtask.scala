@@ -2,13 +2,13 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ CommandTask, Context, Procedure, Reporter }
 
 class _commandtask(var proc: Procedure) extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(Syntax.CommandTaskType)
+    SyntaxJ.reporterSyntax(Syntax.CommandTaskType)
 
   override def toString =
     super.toString +

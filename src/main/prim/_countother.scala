@@ -3,13 +3,13 @@
 package org.nlogo.prim
 
 import org.nlogo.agent.AgentSet
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Reporter, Context }
 
 class _countother extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.AgentsetType),
       Syntax.NumberType, "-TPL")
 

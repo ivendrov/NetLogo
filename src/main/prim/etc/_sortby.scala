@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ LogoException, LogoList }
 import org.nlogo.agent.AgentSet
 import org.nlogo.nvm.{ ArgumentTypeException, Context, EngineException, Reporter, ReporterTask  }
@@ -14,7 +14,7 @@ class _sortby extends Reporter {
     "Comparison method violates its general contract!"
 
   override def syntax =
-    Syntax.reporterSyntax(Array(Syntax.ReporterTaskType,
+    SyntaxJ.reporterSyntax(Array(Syntax.ReporterTaskType,
                                 Syntax.ListType | Syntax.AgentsetType),
                           Syntax.ListType, "OTPL", "?")
 

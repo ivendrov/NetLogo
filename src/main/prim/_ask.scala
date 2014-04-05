@@ -12,9 +12,10 @@ class _ask extends Command with CustomAssembled {
 
   override def syntax =
     Syntax.commandSyntax(
-      Array(Syntax.AgentsetType | Syntax.AgentType,
-            Syntax.CommandBlockType),
-      "OTPL", "?", true)
+      right = List(Syntax.AgentsetType | Syntax.AgentType, Syntax.CommandBlockType),
+      agentClassString = "OTPL",
+      blockAgentClassString = "?",
+      switches = true)
 
   override def toString =
     super.toString + ":+" + offset

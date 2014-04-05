@@ -2,12 +2,12 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Context, Pure, Reporter }
 
 class _unaryminus extends Reporter with Pure {
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.NumberType),
       Syntax.NumberType)
   override def report(context: Context): java.lang.Double =

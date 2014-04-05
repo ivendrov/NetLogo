@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ Dump, I18N, TypeNames }
 import org.nlogo.agent.{ Patch, Turtle }
 import org.nlogo.nvm.{ Context, EngineException, Reporter }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 class _nsum4(vn: Int) extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.ReferenceType),
       Syntax.NumberType, "-TP-")
 

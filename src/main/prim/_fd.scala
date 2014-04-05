@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ Let, LogoException }
 import org.nlogo.nvm.{ Command, Context, MutableDouble, CustomAssembled, AssemblerAssistant }
 
@@ -15,7 +15,7 @@ class _fd extends Command with CustomAssembled {
   def let = _let
 
   override def syntax =
-    Syntax.commandSyntax(Array(Syntax.NumberType), "-T--")
+    SyntaxJ.commandSyntax(Array(Syntax.NumberType), "-T--")
 
   override def perform(context: Context) {
     perform_1(context, argEvalDoubleValue(context, 0))

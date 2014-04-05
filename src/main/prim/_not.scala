@@ -2,13 +2,13 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Context, Reporter, Pure }
 
 class _not extends Reporter with Pure {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.BooleanType),
       Syntax.BooleanType)
 

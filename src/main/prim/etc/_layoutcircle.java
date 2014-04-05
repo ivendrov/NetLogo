@@ -8,6 +8,7 @@ import org.nlogo.core.AgentKindJ;
 import org.nlogo.api.I18N;
 import org.nlogo.api.LogoList;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Command;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.EngineException;
@@ -16,7 +17,7 @@ public final strictfp class _layoutcircle
     extends Command {
   @Override
   public Syntax syntax() {
-    return Syntax.commandSyntax
+    return SyntaxJ.commandSyntax
         (new int[]{Syntax.TurtlesetType() | Syntax.ListType(),
             Syntax.NumberType()},
             true);

@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Reporter, Pure, Context }
 
 class _constdouble(value: java.lang.Double) extends Reporter with Pure {
@@ -11,7 +11,7 @@ class _constdouble(value: java.lang.Double) extends Reporter with Pure {
   def primitiveValue = _primitiveValue
 
   override def syntax =
-    Syntax.reporterSyntax(Syntax.NumberType)
+    SyntaxJ.reporterSyntax(Syntax.NumberType)
 
   override def toString =
     super.toString + ":" + primitiveValue

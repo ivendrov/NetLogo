@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.CompilerException
 import org.nlogo.nvm.{ Activation, ArgumentTypeException, Command, CommandTask, Context,
                        EngineException, NonLocalExit, Procedure }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Activation, ArgumentTypeException, Command, CommandTask, 
 class _run extends Command {
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.StringType | Syntax.CommandTaskType,
             Syntax.RepeatableType | Syntax.WildcardType),
       1)

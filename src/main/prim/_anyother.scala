@@ -10,8 +10,9 @@ class _anyother extends Reporter {
 
   override def syntax =
     Syntax.reporterSyntax(
-      Array(Syntax.AgentsetType),
-      Syntax.BooleanType, "-TPL")
+      right = List(Syntax.AgentsetType),
+      ret = Syntax.BooleanType,
+      agentClassString = "-TPL")
 
   override def report(context: Context): java.lang.Boolean =
     Boolean.box(report_1(context, argEvalAgentSet(context, 0)))

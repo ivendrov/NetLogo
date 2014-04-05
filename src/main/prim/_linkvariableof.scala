@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ I18N, AgentException, LogoList, LogoListBuilder }
 import org.nlogo.nvm.{ Reporter, Context, EngineException, ArgumentTypeException }
 import org.nlogo.agent.{ Agent, AgentSet }
@@ -14,7 +14,7 @@ class _linkvariableof(_vn: Int) extends Reporter {
       Option(world).map(_.linksOwnNameAt(vn)).getOrElse(vn.toString)
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.LinkType | Syntax.LinksetType),
       Syntax.WildcardType)
 

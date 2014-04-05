@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ I18N, AgentException, LogoList, LogoListBuilder }
 import org.nlogo.agent.{ Agent, AgentSet }
 import org.nlogo.nvm.{ Reporter, Context, EngineException, ArgumentTypeException }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException, ArgumentTypeException
 class _patchvariableof(_vn: Int) extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.TurtleType | Syntax.PatchType | Syntax.TurtlesetType | Syntax.PatchsetType),
       Syntax.WildcardType)
 

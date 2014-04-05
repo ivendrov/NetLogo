@@ -3,7 +3,7 @@
 package org.nlogo.prim
 
 import org.nlogo.agent.Patch
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.nvm.{ Command, Context }
 
 // replaces _sprout when initialization block is empty
@@ -11,7 +11,7 @@ import org.nlogo.nvm.{ Command, Context }
 class _sproutfast(breedName: String) extends Command {
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.NumberType),
       "--P-", true)
 

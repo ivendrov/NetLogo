@@ -5,13 +5,14 @@ package org.nlogo.prim.etc;
 import org.nlogo.agent.Link;
 import org.nlogo.agent.Turtle;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Command;
 
 public final strictfp class _die
     extends Command {
   @Override
   public Syntax syntax() {
-    return Syntax.commandSyntax("-T-L", true);
+    return SyntaxJ.commandSyntax("-T-L", true);
   }
 
   @Override

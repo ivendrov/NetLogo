@@ -4,13 +4,14 @@ package org.nlogo.prim.etc;
 
 import org.nlogo.agent.Link;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.Reporter;
 
 public final strictfp class _linkheading extends Reporter {
   @Override
   public Syntax syntax() {
-    return Syntax.reporterSyntax
+    return SyntaxJ.reporterSyntax
         (Syntax.NumberType(), "---L");
   }
 

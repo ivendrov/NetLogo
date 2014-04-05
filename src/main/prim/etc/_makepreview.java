@@ -4,6 +4,7 @@ package org.nlogo.prim.etc;
 
 import org.nlogo.api.CompilerException;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.EngineException;
 import org.nlogo.nvm.Procedure;
@@ -12,7 +13,7 @@ public final strictfp class _makepreview
     extends org.nlogo.nvm.Command {
   @Override
   public Syntax syntax() {
-    return Syntax.commandSyntax("O---", false);
+    return SyntaxJ.commandSyntax("O---", false);
   }
 
   @Override

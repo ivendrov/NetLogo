@@ -7,6 +7,7 @@ import org.nlogo.agent.Link;
 import org.nlogo.agent.Turtle;
 import org.nlogo.core.AgentKindJ;
 import org.nlogo.core.Syntax;
+import org.nlogo.core.SyntaxJ;
 import org.nlogo.nvm.Command;
 import org.nlogo.nvm.Context;
 
@@ -14,7 +15,7 @@ public final strictfp class _layoutspring
     extends Command {
   @Override
   public Syntax syntax() {
-    return Syntax.commandSyntax
+    return SyntaxJ.commandSyntax
         (new int[]{Syntax.TurtlesetType(), Syntax.LinksetType(),
             Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType()},
             true);

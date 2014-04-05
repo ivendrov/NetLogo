@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ Let, LogoException }
 import org.nlogo.nvm.{ Command, Context, MutableLong, CustomAssembled, AssemblerAssistant }
 
@@ -13,7 +13,7 @@ class _repeat extends Command with CustomAssembled {
   def let = _let
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.NumberType,
             Syntax.CommandBlockType))
 

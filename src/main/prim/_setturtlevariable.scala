@@ -2,7 +2,7 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.AgentException
 import org.nlogo.nvm.{ Command, Context, EngineException }
 
@@ -11,7 +11,7 @@ class _setturtlevariable(_vn: Int) extends Command {
   def this(original: _turtlevariable) = this(original.vn)
 
   override def syntax =
-    Syntax.commandSyntax(
+    SyntaxJ.commandSyntax(
       Array(Syntax.WildcardType), "-T--", true)
 
   override def toString =

@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.Syntax
+import org.nlogo.core.{ Syntax, SyntaxJ }
 import org.nlogo.api.{ LogoList, LogoListBuilder, TypeNames }
 import org.nlogo.agent.Agent
 import org.nlogo.nvm.{ Context, EngineException, Reporter }
@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 class _sorton extends Reporter {
 
   override def syntax =
-    Syntax.reporterSyntax(
+    SyntaxJ.reporterSyntax(
       Array(Syntax.ReporterBlockType, Syntax.AgentsetType),
       Syntax.ListType,
       "OTPL", "?")  // ? = reporter block has unknown agent type
