@@ -2,7 +2,7 @@
 
 package org.nlogo.prim.etc
 
-import org.nlogo.core.{ Syntax, SyntaxJ }
+import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Reporter, Context, EngineException }
 import org.nlogo.agent.{ Turtle, LinkManager }
 
@@ -11,9 +11,10 @@ class _linkneighbor(breedName: String) extends Reporter {
   def this() = this(null)
 
   override def syntax =
-    SyntaxJ.reporterSyntax(
-      Array(Syntax.AgentType),
-      Syntax.BooleanType, "-T--")
+    Syntax.reporterSyntax(
+      right = List(Syntax.AgentType),
+      ret = Syntax.BooleanType,
+      agentClassString = "-T--")
 
   override def toString =
     super.toString + ":" + breedName
