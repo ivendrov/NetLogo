@@ -10,7 +10,7 @@ object FrontEnd extends FrontEnd {
   val tokenizer: core.TokenizerInterface =
     Femto.scalaSingleton("org.nlogo.lex.Tokenizer")
   val tokenMapper = new parse.TokenMapper(
-    "/system/tokens.txt", "org.nlogo.prim.")
+    "/system/tokens.txt", "org.nlogo.core.prim.")
   // well this is pretty ugly.  LiteralParser and LiteralAgentParser call each other,
   // so they're hard to instantiate, but we "tie the knot" using lazy val. - ST 5/3/13
   def literalParser(world: api.World, extensionManager: api.ExtensionManager): parse.LiteralParser = {
@@ -44,6 +44,8 @@ trait FrontEndMain {
     : (Seq[ProcedureDefinition], nvm.StructureResults) = {
     val structureResults = StructureParser.parseAll(
       tokenizer, source, displayName, program, subprogram, oldProcedures, extensionManager)
+    val backifier = new Backifier(structureResults.program, extensionManager,
+      oldProcedures ++ structureResults.procedures)
     def parseProcedure(procedure: nvm.Procedure): ProcedureDefinition = {
       val rawTokens = structureResults.tokens(procedure)
       val usedNames =
@@ -62,7 +64,8 @@ trait FrontEndMain {
           namer.process(rawTokens.iterator, procedure))
       val stuffedTokens =
         namedTokens.map(LetStuffer.stuffLet(_, lets, namedTokens))
-      new ExpressionParser(procedure).parse(stuffedTokens)
+      new ExpressionParser(backifier, procedure)
+        .parse(stuffedTokens)
     }
     val procdefs = structureResults.procedures.values.map(parseProcedure).toVector
     (procdefs, structureResults)

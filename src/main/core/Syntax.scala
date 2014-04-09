@@ -67,6 +67,12 @@ case class Syntax private(
   def isInfix =
     left != VoidType
 
+  /**
+   * determines whether an instruction allows a variable number of args.
+   */
+  def isVariadic: Boolean =
+    right.exists(compatible(_, Syntax.RepeatableType))
+
   def dfault =
     defaultOption.getOrElse(right.size)
 

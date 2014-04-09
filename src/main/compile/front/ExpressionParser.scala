@@ -5,18 +5,17 @@ package front
 
 import Fail.{ cAssert, exception }
 import org.nlogo.{ core, api, nvm, parse, prim },
-  core.{ Syntax, Token, TokenType },
+  core.{ Syntax, Token, TokenType, Referenceable },
     Syntax.compatible,
   api.{ LogoList, Nobody },
-  nvm.{ Command, Instruction, Procedure, Referenceable, Reporter},
-  parse.LiteralParser,
-  prim._
+  nvm.{ Command, Instruction, Procedure, Reporter},
+  parse.LiteralParser
 
 /**
  * Parses procedure bodies.
  */
 
-class ExpressionParser(procedure: Procedure) {
+class ExpressionParser(backifier: Backifier, procedure: Procedure) {
 
   /**
    * one less than the lowest valid operator precedence. See Syntax.
@@ -54,9 +53,9 @@ class ExpressionParser(procedure: Procedure) {
         stmt
       case TokenType.Command =>
         val stmt =
-          new Statement(token.value.asInstanceOf[Command],
+          new Statement(backifier(token.value.asInstanceOf[core.Command]),
             token.start, token.end, token.filename)
-        if (variadic && isVariadic(stmt.instruction))
+        if (variadic && stmt.instruction.syntax.isVariadic)
           parseVarArgs(stmt, tokens, MinPrecedence)
         else
           parseArguments(stmt, tokens, MinPrecedence)
@@ -114,7 +113,7 @@ class ExpressionParser(procedure: Procedure) {
         done = true
       else if (token.tpe == TokenType.Reporter &&
                goalType != Syntax.ReporterTaskType &&
-               token.value.asInstanceOf[Reporter].syntax.isInfix) {
+               token.value.asInstanceOf[core.Reporter].syntax.isInfix) {
         // we can be confident that any infix op still in tokens
         // at this point is lower precedence, or we would already
         // have consumed it. so if we have a non-default number of
@@ -137,13 +136,6 @@ class ExpressionParser(procedure: Procedure) {
   }
 
   /**
-   * determines whether an instruction allows a variable number of args. This should maybe be moved
-   * into Syntax, where it could be made more efficient.
-   */
-  private def isVariadic(ins: Instruction): Boolean =
-    ins.syntax.right.exists(compatible(_, Syntax.RepeatableType))
-
-  /**
    * this is used for generating an error message when some arguments are found to be missing
    */
   private def missingInput(app: Application, right: Boolean): String = {
@@ -151,13 +143,13 @@ class ExpressionParser(procedure: Procedure) {
     val rightArgs = syntax.right.map(core.TypeNames.aName(_).replaceFirst("anything", "any input"))
     val left = syntax.left
     val result =
-      if (right && isVariadic(app.instruction) && syntax.minimum == 0)
+      if (right && app.instruction.syntax.isVariadic && syntax.minimum == 0)
         app.instruction.displayName + " expected " + syntax.rightDefault +
           " input" + (if(syntax.rightDefault > 1) "s" else "") +
           " on the right or any number of inputs when surrounded by parentheses"
       else
         app.instruction.displayName + " expected " +
-          (if (isVariadic(app.instruction)) "at least " else "") +
+          (if (app.instruction.syntax.isVariadic) "at least " else "") +
           (if (right)
              syntax.rightDefault + " input" + (if (syntax.rightDefault > 1) "s"
                                                else "") +
@@ -254,7 +246,7 @@ class ExpressionParser(procedure: Procedure) {
       // wouldn't be here). there has to be a better way to do this, though...
       val rApp = arg.asInstanceOf[ReporterApp]
       cAssert(rApp.reporter.isInstanceOf[Referenceable], ExpectedReferencable, arg)
-      rApp.reporter = new _reference(rApp.reporter.asInstanceOf[Referenceable].makeReference)
+      rApp.reporter = new prim._reference(rApp.reporter.asInstanceOf[Referenceable].makeReference)
     }
     arg
   }
@@ -353,11 +345,11 @@ class ExpressionParser(procedure: Procedure) {
           tokens.next()
           val (reporter, rApp) = token.tpe match {
             case TokenType.Literal =>
-              val r = Literals.makeLiteralReporter(token.value)
+              val r = new prim._const(token.value)
               r.token = token
               (r, new ReporterApp(r, token.start, token.end, token.filename))
             case TokenType.Reporter =>
-              val r = token.value.asInstanceOf[Reporter]
+              val r = backifier(token.value.asInstanceOf[core.Reporter])
               // the "|| wantReporterTask" is needed or the concise syntax wouldn't work for infix
               // reporters, e.g. "map + ..."
               if (!r.syntax.isInfix || wantReporterTask)
@@ -366,9 +358,9 @@ class ExpressionParser(procedure: Procedure) {
                 // this is a bit of a hack, but it's not terrible.  _minus is allowed to be unary
                 // (negation) but only if it's missing a left argument and is in a possibly variadic
                 // context (the first thing in a set of parens, basically).
-                if (!r.isInstanceOf[_minus] || !variadic)
+                if (!r.isInstanceOf[prim._minus] || !variadic)
                   throw new MissingPrefixException(token)
-                val r2 = new _unaryminus
+                val r2 = new prim._unaryminus
                 r2.token = token
                 (r2, new ReporterApp(r2, token.start, token.end, token.filename))
               }
@@ -381,14 +373,14 @@ class ExpressionParser(procedure: Procedure) {
           // take at least one input (since otherwise a simple "map f xs" wouldn't evaluate f).  the
           // !variadic check is to prevent "map (f a) ..." from being misparsed.
           if (wantReporterTask && !variadic && (wantAnyTask || reporter.syntax.totalDefault > 0)) {
-            val task = new _reportertask
+            val task = new prim._reportertask
             task.token = reporter.token
             val taskApp =
               new ReporterApp(task,
                 reporter.token.start, reporter.token.end, reporter.token.filename)
             taskApp.addArgument(rApp)
             for(argNumber <- 1 to reporter.syntax.totalDefault) {
-              val lv = new _taskvariable(argNumber)
+              val lv = new prim._taskvariable(argNumber)
               lv.token = reporter.token
               rApp.addArgument(
                 new ReporterApp(lv,
@@ -398,7 +390,7 @@ class ExpressionParser(procedure: Procedure) {
           }
           // the normal case
           else {
-            if (variadic && isVariadic(rApp.instruction))
+            if (variadic && rApp.instruction.syntax.isVariadic)
               parseVarArgs(rApp, tokens, reporter.syntax.precedence)
             else
               parseArguments(rApp, tokens, reporter.syntax.precedence)
@@ -408,12 +400,12 @@ class ExpressionParser(procedure: Procedure) {
         // instead of "foreach xs [ print ? ]"
         case TokenType.Command if wantCommandTask =>
           tokens.next()
-          val stmt = new Statement(token.value.asInstanceOf[Command],
+          val stmt = new Statement(backifier(token.value.asInstanceOf[core.Command]),
             token.start, token.end, token.filename)
-          val task = new _commandtask(null) // LambdaLifter will fill in
+          val task = new prim._commandtask(null) // LambdaLifter will fill in
           task.token = token
           for(argNumber <- 1 to stmt.command.syntax.totalDefault) {
-            val lv = new _taskvariable(argNumber)
+            val lv = new prim._taskvariable(argNumber)
             lv.token = token
             stmt.addArgument(new ReporterApp(lv, token.start, token.end, token.filename))
           }
@@ -453,7 +445,7 @@ class ExpressionParser(procedure: Procedure) {
     while (!done) {
       val token = tokens.head
       if (token.tpe == TokenType.Reporter) {
-        val reporter = token.value.asInstanceOf[Reporter]
+        val reporter = backifier(token.value.asInstanceOf[core.Reporter])
         val syntax = reporter.syntax
         if (syntax.isInfix && (syntax.precedence > precedence ||
                                 (syntax.isRightAssociative && syntax.precedence == precedence))) {
@@ -552,7 +544,7 @@ class ExpressionParser(procedure: Procedure) {
       cAssert(closeBracket.tpe == TokenType.CloseBracket, ExpectedCloseBracket, closeBracket)
       // the origin of the block are based on the positions of the brackets.
       tokens.next()
-      val task = new _reportertask
+      val task = new prim._reportertask
       task.token = openBracket
       val app = new ReporterApp(task, openBracket.start, closeBracket.end, openBracket.filename)
       app.addArgument(expr)
@@ -574,7 +566,7 @@ class ExpressionParser(procedure: Procedure) {
       val closeBracket = token
       // the origin of the block are based on the positions of the brackets.
       tokens.next()
-      val task = new _commandtask(null) // LambdaLifter will fill in
+      val task = new prim._commandtask(null) // LambdaLifter will fill in
       task.token = openBracket
       val rapp =
         new ReporterApp(
@@ -592,10 +584,9 @@ class ExpressionParser(procedure: Procedure) {
       // to the LiteralParser through Compiler.readFromString ev 3/20/08
       val (list, closeBracket) =
         new LiteralParser(null, null, null).parseLiteralList(tokens.next(), tokens)
-      val tmp = Literals.makeLiteralReporter(list)
-      tmp.token =
-        new Token("", TokenType.Literal, null)(
-          openBracket.start, closeBracket.end, closeBracket.filename)
+      val tmp = new prim._const(list)
+      tmp.token = new Token("", TokenType.Literal, null)(
+        openBracket.start, closeBracket.end, closeBracket.filename)
       new ReporterApp(tmp, openBracket.start, closeBracket.end, closeBracket.filename)
     }
     // we weren't actually expecting a block at all!

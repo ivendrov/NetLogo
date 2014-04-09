@@ -29,7 +29,7 @@ object Optimizer extends DefaultAstVisitor {
   private val commandMungers =
     List[CommandMunger](Fd1, FdLessThan1, HatchFast, SproutFast, CrtFast, CroFast)
   private val reporterMungers =
-    List[ReporterMunger](PatchAt, With, OneOfWith, Nsum, Nsum4,
+    List[ReporterMunger](Constants, PatchAt, With, OneOfWith, Nsum, Nsum4,
          CountWith, OtherWith, WithOther, AnyOther, AnyOtherWith, CountOther, CountOtherWith,
          AnyWith1, AnyWith2, AnyWith3, AnyWith4, AnyWith5,
          PatchVariableDouble, TurtleVariableDouble, RandomConst)
@@ -154,6 +154,16 @@ object Optimizer extends DefaultAstVisitor {
         case stmt: Statement => stmt.removeArgument(stmt.args.size - 1)
       }
     }
+    def replace(newGuy: Instruction) {
+      node match {
+        case app: ReporterApp =>
+          newGuy.token = app.reporter.token
+          app.reporter = newGuy.asInstanceOf[Reporter]
+        case stmt: Statement =>
+          newGuy.token = stmt.command.token
+          stmt.command = newGuy.asInstanceOf[Command]
+      }
+    }
     def replace(theClass: Class[_ <: Instruction], constructorArgs: Any*) {
       val newGuy = Instantiator.newInstance[Instruction](theClass, constructorArgs: _*)
       node match {
@@ -228,6 +238,12 @@ object Optimizer extends DefaultAstVisitor {
       root.removeLastArg()
       root.replace(classOf[_crofast],
                    (root.command.asInstanceOf[_createorderedturtles]).breedName)
+    }
+  }
+  private object Constants extends RewritingReporterMunger {
+    val clazz = classOf[_const]
+    def munge(root: Match) {
+      root.replace(Literals.makeLiteralReporter(root.report))
     }
   }
   private object PatchAt extends RewritingReporterMunger {

@@ -2,10 +2,10 @@
 
 package org.nlogo.prim
 
-import org.nlogo.core.{ Syntax, AgentKind }
-import org.nlogo.nvm.{ Reporter, Context, Reference }
+import org.nlogo.core.{ Syntax, AgentKind, Reference, Referenceable }
+import org.nlogo.nvm.{ Reporter, Context }
 
-class _observervariable(_vn: Int) extends Reporter {
+class _observervariable(_vn: Int) extends Reporter with Referenceable {
 
   override def syntax =
     Syntax.reporterSyntax(

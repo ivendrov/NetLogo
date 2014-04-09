@@ -58,9 +58,6 @@ trait FrontEndExtras { this: nvm.FrontEndInterface =>
     result
   }
 
-  def makeLiteralReporter(value: AnyRef): nvm.Reporter =
-    Literals.makeLiteralReporter(value)
-
   // used by CommandLine
   def isReporter(s: String, program: api.Program, procedures: ProceduresMap, extensionManager: api.ExtensionManager) =
     try {

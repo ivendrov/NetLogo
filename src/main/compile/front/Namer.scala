@@ -30,7 +30,7 @@ class Namer(
     // the handlers are mutually exclusive (only one applies), so the order the handlers
     // appear is arbitrary, except that for checkName to work, ProcedureVariableHandler
     // and CallHandler must come last - ST 5/14/13, 5/16/13
-    val handlers = Stream[Token => Option[(TokenType, nvm.Instruction)]](
+    val handlers = Stream[Token => Option[(TokenType, core.Instruction)]](
       CommandHandler,
       ReporterHandler,
       TaskVariableHandler,
@@ -51,10 +51,10 @@ class Namer(
     }
     def checkName(token: Token) {
       val newVal = processOne(token).map(_.value).get
-      val ok = newVal.isInstanceOf[prim._call] ||
-        newVal.isInstanceOf[prim._callreport] ||
-        newVal.isInstanceOf[prim._procedurevariable]
-      cAssert(ok, alreadyTaken(newVal.toString, token.text.toUpperCase), token)
+      val ok = newVal.isInstanceOf[core.prim._call] ||
+        newVal.isInstanceOf[core.prim._callreport] ||
+        newVal.isInstanceOf[core.prim._procedurevariable]
+      cAssert(ok, alreadyTaken(newVal.getClass.getSimpleName, token.text.toUpperCase), token)
     }
     for (token <- procedure.nameToken +: procedure.argTokens)
       checkName(token)

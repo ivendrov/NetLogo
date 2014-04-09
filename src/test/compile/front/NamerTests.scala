@@ -32,14 +32,14 @@ class NamerTests extends FunSuite {
     assertResult("")(compile("").mkString)
   }
   test("interface global") {
-    assertResult("Token(x,Reporter,_observervariable:0)")(
+    assertResult("Token(x,Reporter,_observervariable(0))")(
       compile("print x").drop(1).mkString)
   }
   test("let") {
     val expected =
-      "Token(let,Command,_let)" +
-      "Token(y,Reporter,_letvariable(Y))" +
-      "Token(5,Literal,5.0)"
+      "Token(let,Command,_let())" +
+        "Token(y,Reporter,_letvariable(Y))" +
+        "Token(5,Literal,5.0)"
     assertResult(expected)(
       compile("let y 5").mkString)
   }
