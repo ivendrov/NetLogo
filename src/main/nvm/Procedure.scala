@@ -31,9 +31,9 @@ class Procedure(
   // that's determined by TaskVisitor. so for now this is mutable - ST 2/4/11
   val taskFormals = collection.mutable.Buffer[api.Let]()
 
-  def getTaskFormal(n: Int, token: core.Token): api.Let = {
+  def getTaskFormal(n: Int): api.Let = {
     while (taskFormals.size < n)
-      taskFormals += api.Let("?" + n, token.start, token.end)
+      taskFormals += api.Let("?" + n)
     taskFormals.last
   }
 

@@ -18,24 +18,6 @@ extends NameHandler {
         (TokenType.Reporter, new core.prim._procedurevariable(args.indexOf(ident), ident)))
 }
 
-class LetVariableHandler(lets: Vector[api.Let], count: () => Int)
-extends NameHandler {
-  override def apply(token: Token) = {
-    def getLetFromArg(ident: String, tokPos: Int): Option[api.Let] = {
-      def checkLet(let: api.Let): Option[api.Let] =
-        if(tokPos < let.start || tokPos > let.end || let.name != ident)
-          None
-        else
-          Some(let)
-      lets.map(checkLet).find(_.isDefined).getOrElse(None)
-    }
-    Some(token.value.asInstanceOf[String])
-      .flatMap{ident =>
-        getLetFromArg(ident, count()).map(let =>
-          (TokenType.Reporter, new core.prim._letvariable(let)))}
-  }
-}
-
 class CallHandler(procedures: nvm.FrontEndInterface.ProceduresMap) extends NameHandler {
   override def apply(token: Token) = {
     val name = token.value.asInstanceOf[String]

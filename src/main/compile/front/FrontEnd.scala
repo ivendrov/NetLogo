@@ -52,20 +52,18 @@ trait FrontEndMain {
         StructureParser.usedNames(structureResults.program,
           structureResults.procedures ++ oldProcedures) ++
         procedure.args.map(_ -> "local variable here")
-      val lets =
-        new parse.LetScoper(rawTokens)
-          .scan(usedNames)
       val namer =
         new Namer(structureResults.program,
           oldProcedures ++ structureResults.procedures,
-          extensionManager, lets)
+          extensionManager)
       val namedTokens =
-        new parse.CountedIterator(
-          namer.process(rawTokens.iterator, procedure))
-      val stuffedTokens =
-        namedTokens.map(LetStuffer.stuffLet(_, lets, namedTokens))
-      new ExpressionParser(backifier, procedure)
-        .parse(stuffedTokens)
+        namer.process(rawTokens.iterator, procedure)
+      val procdef =
+        new ExpressionParser(backifier, procedure)
+          .parse(namedTokens)
+      // connect _letvariable to corresponding _let
+      procdef.accept(new LetVisitor(usedNames))
+      procdef
     }
     val procdefs = structureResults.procedures.values.map(parseProcedure).toVector
     (procdefs, structureResults)

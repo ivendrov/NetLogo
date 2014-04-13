@@ -1050,7 +1050,7 @@ reporter procedure FIND-PARTNER:[TOTAL PARTNER]{OTPL}:
           RETURN
 [5]_asm_procedurefindpartner_ifelse_8 "ifelse nc > total" boolean => void
       _greaterthan Object,Object => boolean
-        _letvariable(NC) => Object
+        _letvariable(Let(NC)) => Object
         _procedurevariable:TOTAL => Object
          L0
           ALOAD 1
@@ -1203,7 +1203,7 @@ reporter procedure FIND-PARTNER:[TOTAL PARTNER]{OTPL}:
 [8]_asm_procedurefindpartner_setprocedurevariable_11 "set total total - nc" Object => void
       _minus double,double => double
         _procedurevariable:TOTAL => Object
-        _letvariable(NC) => Object
+        _letvariable(Let(NC)) => Object
           TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
           TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
          L4

@@ -1367,7 +1367,7 @@ procedure SETUP-SPATIALLY-CLUSTERED-NETWORK:[NUM-LINKS _repeatlocal:1]{OTPL}:
               ARETURN
 [4]_asm_proceduresetupspatiallyclusterednetwork_if_7 "if choice != nobody" boolean => void
       _notequal Object,Object => boolean
-        _letvariable(CHOICE) => Object
+        _letvariable(Let(CHOICE)) => Object
         _nobody => Nobody$
          L0
           ALOAD 1

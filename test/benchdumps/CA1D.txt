@@ -1279,7 +1279,7 @@ procedure SETUP-CONTINUE:[ON?-LIST]{O---}:
       _map
         _reportertask
           _asm_proceduresetupcontinue_patchvariableof_4 "of ?" Object => Object
-            _letvariable(null) => Object
+            _letvariable(Let(null)) => Object
                 TRYCATCHBLOCK L0 L1 L1 org/nlogo/api/AgentException
                 TRYCATCHBLOCK L2 L3 L1 org/nlogo/api/AgentException
                L4

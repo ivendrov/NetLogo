@@ -67,7 +67,7 @@ trait FrontEndExtras { this: nvm.FrontEndInterface =>
         None, nvm.StructureResults(program, procedures))
       val results = sp.parse(subprogram = true)
       val namer =
-        new Namer(program, procedures ++ results.procedures, extensionManager, Vector())
+        new Namer(program, procedures ++ results.procedures, extensionManager)
       val proc = results.procedures.values.head
       val tokens = namer.process(results.tokens(proc).iterator, proc)
       tokens.toStream

@@ -3,8 +3,6 @@
 package org.nlogo.core
 package prim
 
-import org.nlogo.api.Let
-
 case class _and() extends Reporter {
   override def syntax =
     Syntax.reporterSyntax(
@@ -158,22 +156,14 @@ case class _lessthan() extends Reporter {
       precedence = Syntax.NormalPrecedence - 4)
 }
 case class _let() extends Command {
-  var let: Let = null
   override def syntax =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType, Syntax.WildcardType))
-  override def toString =
-    "_let(" +
-      Option(let)
-        .map(l => s":${l.name}")
-      .getOrElse("") + ")"
 }
-case class _letvariable(let: Let) extends Reporter {
+case class _letvariable() extends Reporter {
   override def syntax =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType)
-  override def toString =
-    s"_letvariable(${let.name})"
 }
 case class _linkbreedvariable(name: String) extends Reporter {
   override def syntax =

@@ -3382,7 +3382,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
            L1
             ARETURN
       _asm_procedurecheckforparticlecollision_minus_15 "x-speed - my-x-speed" double,double => double
-        _letvariable(X-SPEED) => Object
+        _letvariable(Let(X-SPEED)) => Object
         _procedurevariable:MY-X-SPEED => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
@@ -3456,7 +3456,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
            L1
             ARETURN
       _asm_procedurecheckforparticlecollision_minus_17 "y-speed - my-y-speed" double,double => double
-        _letvariable(Y-SPEED) => Object
+        _letvariable(Let(Y-SPEED)) => Object
         _procedurevariable:MY-Y-SPEED => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
@@ -3697,13 +3697,13 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
       _asm_procedurecheckforparticlecollision_minus_21 "dpx * dpx) + (dpy * dpy)) - (sum-r ^ 2" double,double => double
         _plus double,double => double
           _mult double,double => double
-            _letvariable(DPX) => Object
-            _letvariable(DPX) => Object
+            _letvariable(Let(DPX)) => Object
+            _letvariable(Let(DPX)) => Object
           _mult double,double => double
-            _letvariable(DPY) => Object
-            _letvariable(DPY) => Object
+            _letvariable(Let(DPY)) => Object
+            _letvariable(Let(DPY)) => Object
         _pow double,double => double
-          _letvariable(SUM-R) => Object
+          _letvariable(Let(SUM-R)) => Object
           _constdouble:2.0 => double
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
@@ -3879,11 +3879,11 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
         _constdouble:2.0 => double
         _plus double,double => double
           _mult double,double => double
-            _letvariable(DPX) => Object
-            _letvariable(DVX) => Object
+            _letvariable(Let(DPX)) => Object
+            _letvariable(Let(DVX)) => Object
           _mult double,double => double
-            _letvariable(DPY) => Object
-            _letvariable(DVY) => Object
+            _letvariable(Let(DPY)) => Object
+            _letvariable(Let(DVY)) => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
             TRYCATCHBLOCK L4 L5 L5 java/lang/ClassCastException
@@ -4024,11 +4024,11 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
       _asm_procedurecheckforparticlecollision_plus_25 "dvx * dvx) + (dvy * dvy" double,double => double
         _mult double,double => double
-          _letvariable(DVX) => Object
-          _letvariable(DVX) => Object
+          _letvariable(Let(DVX)) => Object
+          _letvariable(Let(DVX)) => Object
         _mult double,double => double
-          _letvariable(DVY) => Object
-          _letvariable(DVY) => Object
+          _letvariable(Let(DVY)) => Object
+          _letvariable(Let(DVY)) => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
             TRYCATCHBLOCK L4 L5 L5 java/lang/ClassCastException
@@ -4161,13 +4161,13 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
       _asm_procedurecheckforparticlecollision_minus_27 "pv ^ 2 -  (4 * v-squared * p-squared" double,double => double
         _pow double,double => double
-          _letvariable(PV) => Object
+          _letvariable(Let(PV)) => Object
           _constdouble:2.0 => double
         _mult double,double => double
           _mult double,double => double
             _constdouble:4.0 => double
-            _letvariable(V-SQUARED) => Object
-          _letvariable(P-SQUARED) => Object
+            _letvariable(Let(V-SQUARED)) => Object
+          _letvariable(Let(P-SQUARED)) => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
             TRYCATCHBLOCK L4 L5 L5 java/lang/ClassCastException
@@ -4294,7 +4294,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
 [18]_asm_procedurecheckforparticlecollision_if_30 "if D1 >= 0" boolean => void
       _greaterorequal Object,double => boolean
-        _letvariable(D1) => Object
+        _letvariable(Let(D1)) => Object
         _constdouble:0.0 => double
          L0
           ALOAD 1
@@ -4361,12 +4361,12 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
       _asm_procedurecheckforparticlecollision_div_31 "- pv - sqrt D1) / (2 * v-squared" double,double => double
         _minus double,double => double
           _unaryminus double => double
-            _letvariable(PV) => Object
+            _letvariable(Let(PV)) => Object
           _sqrt double => double
-            _letvariable(D1) => Object
+            _letvariable(Let(D1)) => Object
         _mult double,double => double
           _constdouble:2.0 => double
-          _letvariable(V-SQUARED) => Object
+          _letvariable(Let(V-SQUARED)) => Object
             TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
             TRYCATCHBLOCK L2 L3 L3 java/lang/ClassCastException
             TRYCATCHBLOCK L4 L5 L5 java/lang/ClassCastException
@@ -4511,7 +4511,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
 [20]_asm_procedurecheckforparticlecollision_if_32 "if time-to-collision > 0" boolean => void
       _greaterthan Object,double => boolean
-        _letvariable(TIME-TO-COLLISION) => Object
+        _letvariable(Let(TIME-TO-COLLISION)) => Object
         _constdouble:0.0 => double
          L0
           ALOAD 1
@@ -4596,7 +4596,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
       _asm_procedurecheckforparticlecollision_list_34 "list (time-to-collision + ticks) self myself"
         _plus double,double => double
-          _letvariable(TIME-TO-COLLISION) => Object
+          _letvariable(Let(TIME-TO-COLLISION)) => Object
           _ticks => double
         _self => Agent
         _myself => Agent
@@ -4697,7 +4697,7 @@ procedure CHECK-FOR-PARTICLE-COLLISION:[MY-X MY-Y MY-PARTICLE-SIZE MY-X-SPEED MY
             ARETURN
 [22]_asm_procedurecheckforparticlecollision_setobservervariable_35 "set colliding-particles fput colliding-pair colliding-particles" Object => void
       _fput Object,LogoList => LogoList
-        _letvariable(COLLIDING-PAIR) => Object
+        _letvariable(Let(COLLIDING-PAIR)) => Object
         _observervariable:COLLIDING-PARTICLES => Object
           TRYCATCHBLOCK L0 L1 L1 java/lang/ClassCastException
           TRYCATCHBLOCK L2 L3 L4 org/nlogo/api/AgentException
@@ -8078,7 +8078,7 @@ procedure SORT-COLLISIONS:[WINNER DT]{OTPL}:
    [0]_asm_commandtaskfromproceduresortcollisions_if_0 "if first ? < first winner" boolean => void
             _lessthan Object,Object => boolean
               _first Object => Object
-                _letvariable(?1) => Object
+                _letvariable(Let(?1)) => Object
               _first Object => Object
                 _procedurevariable:WINNER => Object
                L0
@@ -8327,7 +8327,7 @@ procedure SORT-COLLISIONS:[WINNER DT]{OTPL}:
                L25
                 RETURN
    [1]_asm_commandtaskfromproceduresortcollisions_setprocedurevariable_1 "set winner ?" Object => void
-            _letvariable(?1) => Object
+            _letvariable(Let(?1)) => Object
                L0
                 ALOAD 1
                 ALOAD 0

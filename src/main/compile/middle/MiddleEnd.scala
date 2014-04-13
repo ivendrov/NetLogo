@@ -11,6 +11,8 @@ object MiddleEnd extends MiddleEndInterface {
   // finds command tasks and makes Procedures out of them, too.  the remaining
   // phases handle all ProcedureDefinitions from both sources. - ST 2/4/11
   def middleEnd(defs: Seq[ProcedureDefinition], flags: nvm.CompilerFlags): Seq[ProcedureDefinition] = {
+
+    // lambda-lift
     val allDefs = {
       val taskNumbers = Iterator.from(1)
       defs.flatMap{procdef =>
@@ -19,6 +21,7 @@ object MiddleEnd extends MiddleEndInterface {
         procdef +: lifter.children
       }
     }
+
     // each Int is the position of that variable in the procedure's args list
     val alteredLets =
       collection.mutable.Map[nvm.Procedure, collection.mutable.Map[api.Let, Int]]()

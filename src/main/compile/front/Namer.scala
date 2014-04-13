@@ -22,11 +22,9 @@ import org.nlogo.{ core, api, nvm, parse, prim },
 class Namer(
   program: api.Program,
   procedures: nvm.FrontEndInterface.ProceduresMap,
-  extensionManager: api.ExtensionManager,
-  lets: Vector[api.Let]) {
+  extensionManager: api.ExtensionManager) {
 
   def process(tokens: Iterator[Token], procedure: nvm.Procedure): Iterator[Token] = {
-    val it = new parse.CountedIterator(tokens)
     // the handlers are mutually exclusive (only one applies), so the order the handlers
     // appear is arbitrary, except that for checkName to work, ProcedureVariableHandler
     // and CallHandler must come last - ST 5/14/13, 5/16/13
@@ -34,7 +32,6 @@ class Namer(
       CommandHandler,
       ReporterHandler,
       TaskVariableHandler,
-      new LetVariableHandler(lets, () => it.count),
       new BreedHandler(program),
       new AgentVariableReporterHandler(program),
       new ExtensionPrimitiveHandler(extensionManager),
@@ -58,22 +55,18 @@ class Namer(
     }
     for (token <- procedure.nameToken +: procedure.argTokens)
       checkName(token)
-    it.map{token => token.tpe match {
+    tokens.map{token => token.tpe match {
       case TokenType.Ident =>
-        processOne(token).getOrElse(fail(token))
+        processOne(token).getOrElse{
+          val let = new core.prim._letvariable
+          let.token = token
+          token.copy(tpe = TokenType.Reporter, value = let)
+        }
       case _ =>
         token
     }}
   }
 
-  /// errors
-
-  def fail(token: Token): Nothing =
-    exception(unknownIdentifier(
-      token.value.asInstanceOf[String]), token)
-
-  private def unknownIdentifier(s: String) =
-    "Nothing named " + s + " has been defined"
   private def alreadyTaken(theirs: String, ours: String) =
     "There is already a " + theirs + " called " + ours
 

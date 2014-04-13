@@ -13,7 +13,7 @@ class _setletvariable(val let: Let) extends Command {
     Syntax.commandSyntax(
       List(Syntax.WildcardType))
   override def toString =
-    super.toString + ":" + let.name
+    s"${super.toString}:${let.name}"
   override def perform(context: Context) {
     context.setLet(let, args(0).report(context))
     context.ip = next

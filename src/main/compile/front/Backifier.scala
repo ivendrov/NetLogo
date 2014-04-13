@@ -34,9 +34,7 @@ class Backifier(
       case core.prim._call(name, _) =>
         new prim._call(procedures(name))
       case let: core.prim._let =>
-        val result = new prim._let
-        result.let = let.let
-        result
+        new prim._let
       case _ =>
         fallback[core.Command, nvm.Command](c)
     }
@@ -57,8 +55,6 @@ class Backifier(
       case core.prim._linkbreedvariable(varName) =>
         new prim._linkbreedvariable(varName)
 
-      case core.prim._letvariable(let) =>
-        new prim._letvariable(let)
       case core.prim._procedurevariable(vn, name) =>
         new prim._procedurevariable(vn, name)
       case core.prim._taskvariable(vn) =>
