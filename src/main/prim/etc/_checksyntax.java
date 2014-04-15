@@ -29,7 +29,7 @@ public final strictfp class _checksyntax
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.StringType()};
     return SyntaxJ.reporterSyntax(right, Syntax.StringType());
   }

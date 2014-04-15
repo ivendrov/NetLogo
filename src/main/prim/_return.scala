@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ Command, Context }
 
 class _return extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
 
   // for use in error messages

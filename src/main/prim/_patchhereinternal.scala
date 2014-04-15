@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Reporter, Context }
 
 class _patchhereinternal extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.PatchType,
       agentClassString = "-TP-")

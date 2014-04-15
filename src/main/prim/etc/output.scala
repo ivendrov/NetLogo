@@ -19,7 +19,7 @@ object OutputCommand {
 import OutputCommand._
 
 abstract class OutputCommand(options: Options) extends nvm.Command {
-  override def syntax =
+  override def syntax2 =
     core.Syntax.commandSyntax(
       right = List(core.Syntax.WildcardType))
   override def perform(context: nvm.Context) {

@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _nvalues extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.ReporterTaskType),
       ret = Syntax.ListType)

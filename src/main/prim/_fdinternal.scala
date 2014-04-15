@@ -12,7 +12,7 @@ class _fdinternal(let: Let) extends Command {
   def this(original: _fd) = this(original.let)
   def this(original: _bk) = this(original.let)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "-T--",
       switches = true)

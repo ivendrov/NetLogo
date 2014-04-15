@@ -12,7 +12,7 @@ import org.nlogo.nvm.EngineException;
 public final strictfp class _watch
     extends Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax
         (new int[]{Syntax.AgentType()},
             "O---", true);

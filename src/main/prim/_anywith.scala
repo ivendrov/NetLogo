@@ -9,7 +9,7 @@ import org.nlogo.agent.AgentSet
 
 class _anywith extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.AgentsetType, Syntax.BooleanBlockType),
       ret = Syntax.BooleanType,

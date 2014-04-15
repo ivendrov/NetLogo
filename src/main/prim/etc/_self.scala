@@ -7,7 +7,7 @@ import org.nlogo.agent.Agent
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _self extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.AgentType,
       agentClassString = "-TPL")

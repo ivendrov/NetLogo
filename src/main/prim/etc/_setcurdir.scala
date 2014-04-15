@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context }
 
 class _setcurdir extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.StringType))
   override def perform(context: Context) {

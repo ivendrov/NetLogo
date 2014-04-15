@@ -16,7 +16,7 @@ import java.util.List;
 public final strictfp class _minoneof
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.AgentsetType(), Syntax.NumberBlockType()};
     int ret = Syntax.AgentType();
     return SyntaxJ.reporterSyntax(right, ret, "OTPL", "?");

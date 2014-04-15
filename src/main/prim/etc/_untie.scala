@@ -7,7 +7,7 @@ import org.nlogo.agent.Link
 import org.nlogo.nvm.{ Command, Context }
 
 class _untie extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "---L",
       switches = true)

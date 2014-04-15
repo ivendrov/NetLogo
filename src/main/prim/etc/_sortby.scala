@@ -13,7 +13,7 @@ class _sortby extends Reporter {
   private val Java7SoPicky =
     "Comparison method violates its general contract!"
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.ReporterTaskType, Syntax.ListType | Syntax.AgentsetType),
       ret = Syntax.ListType,

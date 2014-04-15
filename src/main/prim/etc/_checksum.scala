@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm
 
 class _checksum extends nvm.Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType,
       agentClassString = "O---")

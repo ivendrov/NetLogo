@@ -10,7 +10,7 @@ class _repeatinternal (_offset: Int, let: Let) extends Command {
 
   offset = _offset
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
 
   override def toString =

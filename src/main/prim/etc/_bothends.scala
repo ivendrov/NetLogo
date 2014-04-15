@@ -7,7 +7,7 @@ import org.nlogo.agent.{ AgentSet, Link }
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _bothends extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.AgentsetType,
       agentClassString = "---L")

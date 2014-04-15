@@ -14,7 +14,7 @@ import org.nlogo.nvm.Procedure;
 public final strictfp class _report
     extends Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax
         (new int[]{Syntax.WildcardType()});
   }

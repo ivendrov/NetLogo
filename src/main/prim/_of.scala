@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException }
 
 class _of extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       left = Syntax.ReporterBlockType,
       right = List(Syntax.AgentType | Syntax.AgentsetType),

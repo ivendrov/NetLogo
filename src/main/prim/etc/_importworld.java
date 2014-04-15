@@ -9,7 +9,7 @@ import org.nlogo.nvm.EngineException;
 public final strictfp class _importworld
     extends org.nlogo.nvm.Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax
         (new int[]{Syntax.StringType()},
             "O---", true);

@@ -10,7 +10,7 @@ class _const(_value: AnyRef) extends Reporter with Pure {
 
   def value = _value
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = value match {
         case b: java.lang.Boolean => Syntax.BooleanType

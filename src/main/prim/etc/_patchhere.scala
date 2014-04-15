@@ -7,7 +7,7 @@ import org.nlogo.agent.{ Patch, Turtle }
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _patchhere extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.PatchType,
       agentClassString = "-T--")

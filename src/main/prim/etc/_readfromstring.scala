@@ -7,7 +7,7 @@ import org.nlogo.api.CompilerException
 import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _readfromstring extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.StringType),
       ret = Syntax.ReadableType)

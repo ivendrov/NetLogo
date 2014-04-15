@@ -25,7 +25,7 @@ public final strictfp class _reverse
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.ListType() | Syntax.StringType()};
     int ret = Syntax.ListType() | Syntax.StringType();
     return SyntaxJ.reporterSyntax(right, ret);

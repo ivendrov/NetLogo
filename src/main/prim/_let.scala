@@ -11,7 +11,7 @@ import org.nlogo.nvm.{ Command, Context }
 
 class _let extends Command {
   var let: Let = null
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       List(Syntax.WildcardType, Syntax.WildcardType))
   override def perform(context: Context) {

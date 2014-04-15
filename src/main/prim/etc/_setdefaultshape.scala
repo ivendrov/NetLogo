@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _setdefaultshape extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right =
         List(

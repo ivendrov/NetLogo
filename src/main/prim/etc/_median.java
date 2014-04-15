@@ -48,7 +48,7 @@ public final strictfp class _median
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (new int[]{Syntax.ListType()},
             Syntax.NumberType());

@@ -135,7 +135,7 @@ class Generator(source: String, procedure: Procedure, profilingEnabled: Boolean)
         nlgen.markLineNumber(thisInstrUID)
         new CustomGenerator(profilingEnabled).generate(instr.asInstanceOf[CustomGenerated], nlgen, thisInstrUID, ip)
         nlgen.markLineNumber(parentInstrUID)
-        val actualReturnType = instr.syntax.ret match {
+        val actualReturnType = instr.syntax2.ret match {
           case Syntax.BooleanType => classOf[Boolean]
           case Syntax.ListType => classOf[org.nlogo.api.LogoList]
           case Syntax.StringType => classOf[String]

@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 @annotation.strictfp
 class _patchleftandahead extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.PatchType,

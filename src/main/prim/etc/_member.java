@@ -90,7 +90,7 @@ public final strictfp class _member
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.WildcardType(),
         Syntax.ListType() | Syntax.StringType() | Syntax.AgentsetType()};
     int ret = Syntax.BooleanType();

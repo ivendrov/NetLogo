@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException }
 
 class _turtle extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType),
       ret = Syntax.TurtleType | Syntax.NobodyType)

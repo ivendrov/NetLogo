@@ -13,7 +13,7 @@ class _carefully extends Command with CustomAssembled {
   private[this] val _let = Let()
   def let = _let
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.CommandBlockType, Syntax.CommandBlockType))
 

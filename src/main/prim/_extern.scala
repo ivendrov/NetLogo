@@ -6,7 +6,7 @@ import org.nlogo.{ api, nvm }
 
 class _extern(command: api.Command) extends nvm.Command with nvm.CustomAssembled {
 
-  override def syntax = command.getSyntax
+  override def syntax2 = command.getSyntax
 
   override def toString =
     super.toString + ":+" + offset

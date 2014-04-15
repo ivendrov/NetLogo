@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, Reporter, Pure, CustomGenerated }
 
 class _word extends Reporter with Pure with CustomGenerated {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.RepeatableType | Syntax.WildcardType),
       ret = Syntax.StringType,

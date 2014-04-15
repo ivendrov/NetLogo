@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context }
 
 class _changetopology extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.BooleanType, Syntax.BooleanType))
   override def perform(context: Context) {

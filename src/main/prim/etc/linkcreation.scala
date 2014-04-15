@@ -19,7 +19,7 @@ trait LinkCreationCommand extends Command with nvm.CustomAssembled {
   // overrides
   override def toString =
     super.toString + ":" + breedName + ",+" + offset
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(inputType, Syntax.CommandBlockType | Syntax.OptionalType),
       agentClassString = "-T--",

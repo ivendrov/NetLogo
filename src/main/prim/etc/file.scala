@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Command, Context, EngineException, Reporter }
 import java.io.IOException
 
 class _fileatend extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.BooleanType)
   override def report(context: Context): java.lang.Boolean =
@@ -20,7 +20,7 @@ class _fileatend extends Reporter {
 }
 
 class _fileclose extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
   override def perform(context: Context) {
     try
@@ -35,7 +35,7 @@ class _fileclose extends Command {
 }
 
 class _filecloseall extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
   override def perform(context: Context) {
     try workspace.fileManager.closeAllFiles()
@@ -48,7 +48,7 @@ class _filecloseall extends Command {
 }
 
 class _filedelete extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.StringType))
   override def perform(context: Context) {
@@ -69,7 +69,7 @@ class _filedelete extends Command {
 }
 
 class _fileexists extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.StringType),
       ret = Syntax.BooleanType)
@@ -90,7 +90,7 @@ class _fileexists extends Reporter {
 }
 
 class _fileflush extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
   override def perform(context: Context) {
     try
@@ -105,7 +105,7 @@ class _fileflush extends Command {
 }
 
 class _fileopen extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.StringType))
   override def perform(context: Context) {
@@ -123,7 +123,7 @@ class _fileopen extends Command {
 }
 
 class _fileprint extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
   override def perform(context: Context) {
@@ -142,7 +142,7 @@ class _fileprint extends Command {
 }
 
 class _fileread extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.ReadableType)
   override def report(context: Context): AnyRef =
@@ -161,7 +161,7 @@ class _fileread extends Reporter {
 }
 
 class _filereadchars extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType),
       ret = Syntax.StringType)
@@ -177,7 +177,7 @@ class _filereadchars extends Reporter {
 }
 
 class _filereadline extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType)
   override def report(context: Context): String =
@@ -192,7 +192,7 @@ class _filereadline extends Reporter {
 }
 
 class _fileshow extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
   override def perform(context: Context) {
@@ -210,7 +210,7 @@ class _fileshow extends Command {
 }
 
 class _filetype extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
   override def perform(context: Context) {
@@ -227,7 +227,7 @@ class _filetype extends Command {
 }
 
 class _filewrite extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.ReadableType))
   override def perform(context: Context) {

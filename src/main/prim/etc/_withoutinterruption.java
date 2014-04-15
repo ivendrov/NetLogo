@@ -12,7 +12,7 @@ public final strictfp class _withoutinterruption
     extends Command
     implements org.nlogo.nvm.CustomAssembled {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax
         (new int[]{Syntax.CommandBlockType()});
   }

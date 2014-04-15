@@ -10,7 +10,7 @@ class _reportertask extends Reporter {
 
   val formals = collection.mutable.ArrayBuffer[Let]()
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.WildcardType),
       ret = Syntax.ReporterTaskType)

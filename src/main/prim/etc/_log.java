@@ -12,7 +12,7 @@ import org.nlogo.nvm.Reporter;
 
 public final strictfp class _log extends Reporter implements Pure {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (new int[]{Syntax.NumberType(), Syntax.NumberType()},
             Syntax.NumberType());

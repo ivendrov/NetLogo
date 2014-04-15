@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Reporter, Pure, Context }
 
 class _equal extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       left = Syntax.WildcardType,
       right = List(Syntax.WildcardType),

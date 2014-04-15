@@ -14,7 +14,7 @@ import org.nlogo.nvm.EngineException;
 public final strictfp class _moveto
     extends Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.TurtleType() | Syntax.PatchType()};
     return SyntaxJ.commandSyntax(right, "-T--", true);
   }

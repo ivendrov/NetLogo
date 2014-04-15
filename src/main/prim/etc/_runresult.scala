@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Activation, ArgumentTypeException, Context, EngineExcepti
 
 class _runresult extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(
         Syntax.StringType | Syntax.ReporterTaskType,

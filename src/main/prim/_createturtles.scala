@@ -10,7 +10,7 @@ class _createturtles(val breedName: String) extends Command with CustomAssembled
 
   def this() = this("")
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType, Syntax.CommandBlockType | Syntax.OptionalType),
       agentClassString = "O---",

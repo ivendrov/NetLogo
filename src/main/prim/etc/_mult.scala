@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, Pure, Reporter }
 @annotation.strictfp
 class _mult extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       left = Syntax.NumberType,
       right = List(Syntax.NumberType),

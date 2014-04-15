@@ -7,7 +7,7 @@ import org.nlogo.nvm, nvm.{ Command, Context }
 
 class _ifelse extends Command with nvm.CustomAssembled {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(
         Syntax.BooleanType,

@@ -7,7 +7,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context }
 
 class _penup extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "-T--",
       switches =true)

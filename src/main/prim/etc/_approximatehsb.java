@@ -10,7 +10,7 @@ import org.nlogo.nvm.Reporter;
 
 public final strictfp class _approximatehsb extends Reporter implements Pure {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType()};
     int ret = Syntax.NumberType();
     return SyntaxJ.reporterSyntax(right, ret);

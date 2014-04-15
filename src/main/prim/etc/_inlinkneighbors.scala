@@ -10,7 +10,7 @@ class _inlinkneighbors(breedName: String) extends Reporter {
 
   def this() = this(null)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.AgentsetType,
       agentClassString = "-T--")

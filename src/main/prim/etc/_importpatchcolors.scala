@@ -9,7 +9,7 @@ import org.nlogo.agent.ImportPatchColors.importPatchColors
 
 class _importpatchcolors extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.StringType),
       agentClassString = "O---",

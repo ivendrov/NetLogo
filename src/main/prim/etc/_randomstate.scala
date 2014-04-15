@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 // outcome of the model.
 
 class _randomstate extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType)
   override def report(context: Context): String =

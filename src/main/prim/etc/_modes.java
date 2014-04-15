@@ -56,7 +56,7 @@ public final strictfp class _modes
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.ListType()};
     int ret = Syntax.ListType();
     return SyntaxJ.reporterSyntax(right, ret);

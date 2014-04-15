@@ -23,7 +23,7 @@ import java.util.Set;
 public final strictfp class _turtleset
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.RepeatableType() | Syntax.TurtleType()
         | Syntax.TurtlesetType() | Syntax.NobodyType()
         | Syntax.ListType()};

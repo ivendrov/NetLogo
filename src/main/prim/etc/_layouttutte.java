@@ -16,7 +16,7 @@ import org.nlogo.nvm.EngineException;
 public final strictfp class _layouttutte
     extends Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax
         (new int[]{Syntax.TurtlesetType(), Syntax.LinksetType(),
             Syntax.NumberType()},

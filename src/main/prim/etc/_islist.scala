@@ -7,7 +7,7 @@ import org.nlogo.api.LogoList
 import org.nlogo.nvm.{ Context, Pure, Reporter }
 
 class _islist extends Reporter with Pure {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.WildcardType),
       ret = Syntax.BooleanType)

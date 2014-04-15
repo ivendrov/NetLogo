@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _sorton extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.ReporterBlockType, Syntax.AgentsetType),
       ret = Syntax.ListType,

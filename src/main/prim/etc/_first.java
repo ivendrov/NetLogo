@@ -14,7 +14,7 @@ public final strictfp class _first
     extends Reporter
     implements org.nlogo.nvm.Pure {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.ListType() | Syntax.StringType()};
     int ret = Syntax.WildcardType();
     return SyntaxJ.reporterSyntax(right, ret);

@@ -17,7 +17,7 @@ class _downhill4 extends HillCommand(sign = -1) {
 
 abstract class HillCommand(sign: Int) extends nvm.Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.ReferenceType),
       agentClassString = "-T--",

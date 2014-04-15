@@ -7,7 +7,7 @@ import org.nlogo.api.I18N
 import org.nlogo.nvm.{ Context, Reporter, Pure, EngineException }
 
 class _atan extends Reporter with Pure {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.NumberType)

@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Context, Pure, Reporter }
 
 class _subtractheadings extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.NumberType)

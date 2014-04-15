@@ -7,7 +7,7 @@ import org.nlogo.api.Dump
 import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _error extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
   override def perform(context: Context) {

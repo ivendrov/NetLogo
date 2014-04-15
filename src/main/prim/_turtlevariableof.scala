@@ -13,7 +13,7 @@ class _turtlevariableof(_vn: Int) extends Reporter {
     super.toString + ":" +
       Option(world).map(_.turtlesOwnNameAt(vn)).getOrElse(vn.toString)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.TurtleType | Syntax.TurtlesetType),
       ret = Syntax.WildcardType)

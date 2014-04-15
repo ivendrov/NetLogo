@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ CommandTask, Context, Procedure, Reporter }
 
 class _commandtask(var proc: Procedure) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.CommandTaskType)
 

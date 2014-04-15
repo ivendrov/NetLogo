@@ -32,7 +32,7 @@ public final strictfp class _substring
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.StringType(), Syntax.NumberType(), Syntax.NumberType()};
     int ret = Syntax.StringType();
     return SyntaxJ.reporterSyntax(right, ret);

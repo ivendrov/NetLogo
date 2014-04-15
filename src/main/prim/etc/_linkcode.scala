@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context, CustomAssembled, AssemblerAssistant }
 
 class _linkcode extends Command with CustomAssembled {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "---L")
   override def perform(context: Context) {

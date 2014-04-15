@@ -9,7 +9,7 @@ import org.nlogo.agent.{ Agent, AgentSet }
 
 class _linkbreedvariableof(name: String) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.LinkType | Syntax.LinksetType),
       ret = Syntax.WildcardType)

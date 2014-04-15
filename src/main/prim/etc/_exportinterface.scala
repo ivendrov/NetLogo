@@ -7,7 +7,7 @@ import org.nlogo.api.CommandRunnable
 import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _exportinterface extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.StringType))
   override def perform(context: Context) {

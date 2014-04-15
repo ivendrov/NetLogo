@@ -17,7 +17,7 @@ class _errormessage extends Reporter {
   private[this] var _let: Let = null
   def let = _let
   def let_=(let: Let) { _let = let }  // compiler will call this
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType)
   override def report(context: Context): String =

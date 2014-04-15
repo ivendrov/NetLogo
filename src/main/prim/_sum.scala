@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Reporter, Pure, Context }
 
 class _sum extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.ListType),
       ret = Syntax.NumberType)

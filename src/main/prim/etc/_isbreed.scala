@@ -8,7 +8,7 @@ import org.nlogo.agent.{ Turtle, Link }
 
 class _isbreed(val breedName: String) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.WildcardType),
       ret = Syntax.BooleanType)

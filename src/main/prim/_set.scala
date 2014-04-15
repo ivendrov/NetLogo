@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context }
 
 class _set extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(List(Syntax.WildcardType,
                               Syntax.WildcardType))
   // we get compiled out of existence

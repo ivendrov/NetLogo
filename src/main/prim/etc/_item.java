@@ -45,7 +45,7 @@ public final strictfp class _item
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(),
         Syntax.ListType() | Syntax.StringType()};
     int ret = Syntax.WildcardType();

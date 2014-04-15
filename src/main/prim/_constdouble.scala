@@ -10,7 +10,7 @@ class _constdouble(_primitiveValue: Double) extends Reporter with Pure {
   private[this] val value = Double.box(_primitiveValue)
   val primitiveValue = _primitiveValue
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.NumberType)
 

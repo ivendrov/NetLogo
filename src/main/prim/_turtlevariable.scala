@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException }
 
 class _turtlevariable(_vn: Int) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType | Syntax.ReferenceType,
       agentClassString = "-T--")

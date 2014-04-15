@@ -95,8 +95,8 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
     override def visitStatement(stmt: Statement) {
       val c = stmt.command
       agentClassString = typeCheck(currentProcedure, c, agentClassString)
-      if(c.syntax.blockAgentClassString != null)
-        chooseVisitorAndContinue(c.syntax.blockAgentClassString, stmt.args)
+      if(c.syntax2.blockAgentClassString != null)
+        chooseVisitorAndContinue(c.syntax2.blockAgentClassString, stmt.args)
       else
         super.visitStatement(stmt)
       c.agentClassString = agentClassString
@@ -108,8 +108,8 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
       agentClassString = typeCheck(currentProcedure, r, agentClassString)
       if(r.isInstanceOf[_task])
         app.args.head.accept(new AgentTypeCheckerVisitor(currentProcedure, "OTPL"))
-      else if(r.syntax.blockAgentClassString != null)
-        chooseVisitorAndContinue(r.syntax.blockAgentClassString, app.args)
+      else if(r.syntax2.blockAgentClassString != null)
+        chooseVisitorAndContinue(r.syntax2.blockAgentClassString, app.args)
       else
         super.visitReporterApp(app)
       r.agentClassString = agentClassString
@@ -131,7 +131,7 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
     }
 
     def getReportedAgentType(app: ReporterApp): String = {
-      app.reporter.syntax.ret match {
+      app.reporter.syntax2.ret match {
         case Syntax.TurtleType | Syntax.TurtlesetType => "-T--"
         case Syntax.PatchType  | Syntax.PatchsetType  => "--P-"
         case Syntax.LinkType   | Syntax.LinksetType   => "---L"
@@ -163,7 +163,7 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
       else {
         val instructionUsableBy =
           if(calledProcedure.isDefined) calledProcedure.get.agentClassString
-          else instruction.syntax.agentClassString
+          else instruction.syntax2.agentClassString
         val result = combineRestrictions(agentClassString, instructionUsableBy)
         if(result == "----") {
           val name = instruction.tokenLimitingType.text.toUpperCase

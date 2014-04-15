@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 // (unless you go find and change those test cases). - ST 2/6/09
 
 class _boom extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType)
   override def report(context: Context): AnyRef =

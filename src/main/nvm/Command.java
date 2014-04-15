@@ -23,6 +23,6 @@ public abstract strictfp class Command
   @Override
   public void init(Workspace workspace) {
     super.init(workspace);
-    switches = syntax().switches();
+    switches = syntax2().switches();
   }
 }

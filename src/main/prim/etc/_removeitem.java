@@ -48,7 +48,7 @@ public final strictfp class _removeitem
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (new int[]{Syntax.NumberType(),
             Syntax.ListType() | Syntax.StringType()},

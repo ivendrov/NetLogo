@@ -9,7 +9,7 @@ import org.nlogo.agent.{ Agent, Turtle, Patch, Link }
 
 class _greaterthan extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       left = Syntax.NumberType | Syntax.StringType | Syntax.AgentType,
       right = List(Syntax.NumberType | Syntax.StringType | Syntax.AgentType),

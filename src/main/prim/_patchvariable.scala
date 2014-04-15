@@ -9,7 +9,7 @@ import org.nlogo.agent.Patch
 
 class _patchvariable(_vn: Int) extends Reporter with Referenceable {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType | Syntax.ReferenceType,
       agentClassString = "-TP-")

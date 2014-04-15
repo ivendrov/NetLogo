@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Command, Context, MutableLong,
 
 class _repeatlocal(vn: Int) extends Command with CustomAssembled {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(List(Syntax.NumberType,
                                Syntax.CommandBlockType))
 

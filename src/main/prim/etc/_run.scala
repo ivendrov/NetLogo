@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Activation, ArgumentTypeException, Command, CommandTask, 
 
 class _run extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(
         Syntax.StringType | Syntax.CommandTaskType,

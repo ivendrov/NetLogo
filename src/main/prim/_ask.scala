@@ -10,7 +10,7 @@ import org.nlogo.agent.{ Agent, AgentSet, Observer }
 
 class _ask extends Command with CustomAssembled {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.AgentsetType | Syntax.AgentType, Syntax.CommandBlockType),
       agentClassString = "OTPL",

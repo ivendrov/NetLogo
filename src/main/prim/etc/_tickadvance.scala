@@ -7,7 +7,7 @@ import org.nlogo.api.I18N
 import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _tickadvance extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType),
       agentClassString = "O---",

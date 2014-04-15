@@ -6,7 +6,7 @@ import org.nlogo.{ core, api, agent }
 import org.nlogo.nvm.{ Command, Context }
 
 class _fd1 extends Command {
-  override def syntax =
+  override def syntax2 =
     core.Syntax.commandSyntax(
       agentClassString = "-T--",
       switches = true)

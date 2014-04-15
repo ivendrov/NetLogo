@@ -19,7 +19,7 @@ public final strictfp class _shadeof
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(),
         Syntax.NumberType()};
     int ret = Syntax.BooleanType();

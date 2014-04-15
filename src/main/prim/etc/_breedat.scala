@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Reporter, Context }
 
 class _breedat(breedName: String) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.TurtlesetType,

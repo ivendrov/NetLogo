@@ -22,7 +22,7 @@ import java.util.Set;
 public final strictfp class _linkset
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.RepeatableType() | Syntax.LinkType()
         | Syntax.LinksetType() | Syntax.NobodyType()
         | Syntax.ListType()};

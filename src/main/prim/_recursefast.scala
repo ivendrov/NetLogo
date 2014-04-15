@@ -9,7 +9,7 @@ class _recursefast(original: _call) extends Command {
 
   token = original.token
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
 
   override def toString =

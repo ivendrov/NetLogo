@@ -14,7 +14,7 @@ class _letvariable(private[this] var _let: Let) extends Reporter {
   def let = _let
   def let_=(let: Let) = _let = let
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType)
   override def toString =

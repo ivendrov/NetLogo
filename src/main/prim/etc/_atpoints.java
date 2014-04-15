@@ -144,7 +144,7 @@ public final strictfp class _atpoints
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int left = Syntax.TurtlesetType() | Syntax.PatchsetType();
     int[] right = {Syntax.ListType()};
     int ret = Syntax.AgentsetType();

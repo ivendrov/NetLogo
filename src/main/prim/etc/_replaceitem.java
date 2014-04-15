@@ -49,7 +49,7 @@ public final strictfp class _replaceitem
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(),
         Syntax.ListType() | Syntax.StringType(),
         Syntax.WildcardType()};

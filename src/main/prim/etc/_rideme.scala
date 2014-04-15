@@ -7,7 +7,7 @@ import org.nlogo.api.Perspective
 import org.nlogo.nvm.{ Command, Context }
 
 class _rideme extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "-T--",
       switches = true)

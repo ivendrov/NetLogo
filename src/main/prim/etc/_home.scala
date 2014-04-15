@@ -7,7 +7,7 @@ import org.nlogo.agent.Turtle
 import org.nlogo.nvm.{ Command, Context }
 
 class _home extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "-T--",
       switches = true)

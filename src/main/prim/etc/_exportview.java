@@ -31,7 +31,7 @@ public final strictfp class _exportview
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.StringType()};
     return SyntaxJ.commandSyntax(right);
   }

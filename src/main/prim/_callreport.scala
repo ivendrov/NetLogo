@@ -13,7 +13,7 @@ import org.nlogo.nvm.{ Reporter, CustomGenerated, Context, Procedure,
 
 class _callreport(val procedure: Procedure) extends Reporter with CustomGenerated {
 
-  override def syntax = procedure.syntax
+  override def syntax2 = procedure.syntax
 
   override def toString =
     super.toString + ":" + procedure.name

@@ -11,7 +11,7 @@ class _patchvariabledouble(private[this] var _vn: Int) extends Reporter {
 
   def this() = this(0)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.NumberType,
       agentClassString = "-TP-")

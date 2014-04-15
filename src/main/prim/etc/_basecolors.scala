@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 
 class _basecolors extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.ListType)
 

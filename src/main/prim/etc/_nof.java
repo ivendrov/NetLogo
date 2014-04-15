@@ -70,7 +70,7 @@ public final strictfp class _nof
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (new int[]{Syntax.NumberType(),
             Syntax.AgentsetType() | Syntax.ListType()},

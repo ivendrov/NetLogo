@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ Reporter, Context }
 
 class _observervariable(_vn: Int) extends Reporter with Referenceable {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.WildcardType | Syntax.ReferenceType)
 

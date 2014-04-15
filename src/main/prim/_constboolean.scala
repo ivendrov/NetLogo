@@ -10,7 +10,7 @@ class _constboolean(_primitiveValue: Boolean) extends Reporter with Pure {
   private[this] val value = Boolean.box(_primitiveValue)
   val primitiveValue = _primitiveValue
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.BooleanType)
 

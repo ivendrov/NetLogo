@@ -7,7 +7,7 @@ import org.nlogo.api.I18N
 import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _randomnormal extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.NumberType)

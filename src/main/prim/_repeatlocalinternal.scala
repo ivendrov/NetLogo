@@ -9,7 +9,7 @@ class _repeatlocalinternal(vn: Int, _offset: Int) extends Command {
 
   offset = _offset
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
 
   override def toString =

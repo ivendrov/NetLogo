@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Context, Pure, Reporter, ReporterTask }
 
 class _isreportertask extends Reporter with Pure {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.WildcardType),
       ret = Syntax.BooleanType)

@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, Reporter, Pure }
 
 class _sentence extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.RepeatableType | Syntax.WildcardType),
       ret = Syntax.ListType,

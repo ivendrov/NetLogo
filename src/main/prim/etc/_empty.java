@@ -26,7 +26,7 @@ public final strictfp class _empty
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.ListType() | Syntax.StringType()};
     int ret = Syntax.BooleanType();
     return SyntaxJ.reporterSyntax(right, ret);

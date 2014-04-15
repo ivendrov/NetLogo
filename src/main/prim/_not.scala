@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ Context, Reporter, Pure }
 
 class _not extends Reporter with Pure {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.BooleanType),
       ret = Syntax.BooleanType)

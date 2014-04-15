@@ -9,7 +9,7 @@ import org.nlogo.agent.{ Agent, Turtle, Patch, AgentSet }
 
 class _breedon(breedName: String) extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.TurtleType | Syntax.PatchType | Syntax.TurtlesetType | Syntax.PatchsetType),
       ret = Syntax.TurtlesetType)

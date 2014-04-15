@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, EngineException, HaltException, Reporter }
 
 class _useryesorno extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.WildcardType),
       ret = Syntax.BooleanType)

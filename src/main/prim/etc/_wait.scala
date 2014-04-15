@@ -10,7 +10,7 @@ class _wait extends Command with CustomAssembled {
 
   private[this] val let = Let()
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType))
 

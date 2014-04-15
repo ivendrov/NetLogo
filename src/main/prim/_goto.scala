@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Command, Context }
 
 class _goto extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax()
   override def toString =
     super.toString + ":" + offset

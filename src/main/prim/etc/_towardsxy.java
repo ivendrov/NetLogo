@@ -10,7 +10,7 @@ import org.nlogo.nvm.Reporter;
 
 public final strictfp class _towardsxy extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(),
         Syntax.NumberType()};
     int ret = Syntax.NumberType();

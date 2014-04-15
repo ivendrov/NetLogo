@@ -6,7 +6,7 @@ import org.nlogo.core.{ Syntax }
 import org.nlogo.nvm.{ StackTraceBuilder, Context, Reporter }
 
 class _stacktrace extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType)
   override def report(context: Context): String =

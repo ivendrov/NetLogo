@@ -12,7 +12,7 @@ import org.nlogo.nvm.Reporter;
 
 public final strictfp class _remainder extends Reporter implements Pure {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(),
         Syntax.NumberType()};
     return SyntaxJ.reporterSyntax(right, Syntax.NumberType());

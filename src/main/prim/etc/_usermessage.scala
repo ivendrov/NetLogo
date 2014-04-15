@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Command, Context }
 
 class _usermessage extends Command {
 
-  def syntax =
+  def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
 

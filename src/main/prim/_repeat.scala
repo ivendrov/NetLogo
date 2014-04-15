@@ -12,7 +12,7 @@ class _repeat extends Command with CustomAssembled {
   private[this] val _let = Let()
   def let = _let
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       List(Syntax.NumberType,
             Syntax.CommandBlockType))

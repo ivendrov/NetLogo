@@ -7,7 +7,7 @@ import org.nlogo.api.Version
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _netlogoversion extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType)
   override def report(context: Context): String =

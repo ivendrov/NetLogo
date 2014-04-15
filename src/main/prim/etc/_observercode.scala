@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ AssemblerAssistant, Command, Context, CustomAssembled }
 
 class _observercode extends Command with CustomAssembled {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       agentClassString = "O---")
   override def perform(context: Context) {

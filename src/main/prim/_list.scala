@@ -7,7 +7,7 @@ import org.nlogo.api.{ LogoException, LogoList, LogoListBuilder }
 import org.nlogo.nvm.{ Reporter, Context, Pure, CustomGenerated }
 
 class _list extends Reporter with Pure with CustomGenerated {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.RepeatableType | Syntax.WildcardType),
       ret = Syntax.ListType,

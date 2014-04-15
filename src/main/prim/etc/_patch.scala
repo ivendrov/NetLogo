@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Reporter, Context }
 
 class _patch extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.PatchType | Syntax.NobodyType)

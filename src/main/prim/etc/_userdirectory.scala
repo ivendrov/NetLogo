@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Context, EngineException, Reporter }
 
 class _userdirectory extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.StringType | Syntax.BooleanType)
 

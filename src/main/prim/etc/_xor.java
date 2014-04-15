@@ -21,7 +21,7 @@ public final strictfp class _xor
   }
 
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int left = Syntax.BooleanType();
     int[] right = {Syntax.BooleanType()};
     int ret = Syntax.BooleanType();

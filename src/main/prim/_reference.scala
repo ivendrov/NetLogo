@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ Reporter, Context }
 
 class _reference(_reference: Reference) extends Reporter {
   reference = _reference
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.ReferenceType)
   override def toString =

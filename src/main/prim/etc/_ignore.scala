@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Command, Context }
 // don't want extra stuff in the output. - ST 2/6/09
 
 class _ignore extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType))
   override def perform(context: Context) {

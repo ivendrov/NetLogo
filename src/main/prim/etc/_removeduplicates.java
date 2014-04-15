@@ -17,7 +17,7 @@ public final strictfp class _removeduplicates
     extends Reporter
     implements org.nlogo.nvm.Pure {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.ListType()};
     int ret = Syntax.ListType();
     return SyntaxJ.reporterSyntax(right, ret);

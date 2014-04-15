@@ -7,7 +7,7 @@ import org.nlogo.api.{ Nobody, Perspective }
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _subject extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.AgentType)
   override def report(context: Context): AnyRef =

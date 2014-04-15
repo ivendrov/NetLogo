@@ -20,7 +20,7 @@ import java.util.List;
 public final strictfp class _turtleson
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (new int[]{Syntax.AgentType() | Syntax.AgentsetType()},
             Syntax.TurtlesetType());

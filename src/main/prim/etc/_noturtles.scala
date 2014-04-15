@@ -7,7 +7,7 @@ import org.nlogo.core.{ Syntax }
 import org.nlogo.nvm.{ Context, Reporter }
 
 class _noturtles extends Reporter {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       ret = Syntax.TurtlesetType)
   override def report (context: Context): AgentSet =

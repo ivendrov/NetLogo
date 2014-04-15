@@ -11,7 +11,7 @@ public final strictfp class _while
     extends Command
     implements org.nlogo.nvm.CustomAssembled {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.BooleanBlockType(), Syntax.CommandBlockType()};
     return SyntaxJ.commandSyntax(right);
   }

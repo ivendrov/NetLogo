@@ -204,7 +204,7 @@ extends Expression with Application {
   override def args: Seq[Expression] = _args
   def instruction = reporter // for Application
   def addArgument(arg: Expression) { _args.append(arg) }
-  def reportedType() = reporter.syntax.ret
+  def reportedType() = reporter.syntax2.ret
   def accept(v: AstVisitor) { v.visitReporterApp(this) }
   def removeArgument(index: Int) { _args.remove(index) }
   def replaceArg(index: Int, expr: Expression) { _args(index) = expr }

@@ -19,7 +19,7 @@ import java.util.TreeMap;
 public final strictfp class _minnof
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     int[] right = {Syntax.NumberType(), Syntax.AgentsetType(), Syntax.NumberBlockType()};
     int ret = Syntax.AgentsetType();
     return SyntaxJ.reporterSyntax(right, ret, "OTPL", "?");

@@ -16,7 +16,7 @@ import java.util.List;
 public final strictfp class _withmin
     extends Reporter {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.reporterSyntax
         (Syntax.AgentsetType(),
             new int[]{Syntax.NumberBlockType()},

@@ -8,7 +8,7 @@ import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _randomseed extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType))
 

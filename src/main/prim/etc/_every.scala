@@ -9,7 +9,7 @@ import collection.mutable.WeakHashMap;
 
 class _every extends Command with nvm.CustomAssembled {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType, Syntax.CommandBlockType),
       switches = true)

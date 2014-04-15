@@ -10,7 +10,7 @@ class _outlinkneighbor(breedName: String) extends Reporter {
 
   def this() = this(null)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.AgentType),
       ret = Syntax.BooleanType,

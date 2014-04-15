@@ -11,7 +11,7 @@ import org.nlogo.nvm.Command;
 public final strictfp class _die
     extends Command {
   @Override
-  public Syntax syntax() {
+  public Syntax syntax2() {
     return SyntaxJ.commandSyntax("-T-L", true);
   }
 

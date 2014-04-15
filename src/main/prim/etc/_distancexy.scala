@@ -7,7 +7,7 @@ import org.nlogo.nvm.{ Context, Reporter }
 
 class _distancexy extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.NumberType, Syntax.NumberType),
       ret = Syntax.NumberType,

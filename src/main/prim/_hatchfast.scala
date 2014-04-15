@@ -10,7 +10,7 @@ import org.nlogo.nvm.{ Command, Context }
 
 class _hatchfast(breedName: String) extends Command {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType),
       agentClassString = "-T--",

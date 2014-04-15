@@ -10,7 +10,7 @@ class _setlinkbreedvariable(name: String) extends Command {
 
   def this(original: _linkbreedvariable) = this(original.name)
 
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.WildcardType),
       agentClassString = "---L",

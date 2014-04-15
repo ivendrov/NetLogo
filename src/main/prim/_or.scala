@@ -6,7 +6,7 @@ import org.nlogo.core.Syntax
 import org.nlogo.nvm.{ Context, Reporter, Pure, CustomGenerated }
 
 class _or extends Reporter with Pure with CustomGenerated {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       left = Syntax.BooleanType,
       right = List(Syntax.BooleanType),

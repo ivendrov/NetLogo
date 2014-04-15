@@ -8,7 +8,7 @@ import org.nlogo.agent.{ Agent, Link, Turtle }
 import org.nlogo.nvm.{ Command, Context, EngineException }
 
 class _face extends Command {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = List(Syntax.TurtleType | Syntax.PatchType),
       agentClassString = "-T--",

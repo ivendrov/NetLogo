@@ -9,7 +9,7 @@ import org.nlogo.nvm.{ Reporter, Context, EngineException }
 
 class _countotherwith extends Reporter {
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.AgentsetType, Syntax.BooleanBlockType),
       ret = Syntax.NumberType,

@@ -31,14 +31,14 @@ trait PlotHelpers extends Instruction {
 
 abstract class PlotCommand(args: Int*)
 extends Command with PlotHelpers {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = args.toList)
 }
 
 abstract class PlotActionCommand(args: Int*)
 extends PlotCommand(args: _*) {
-  override def syntax =
+  override def syntax2 =
     Syntax.commandSyntax(
       right = args.toList)
   override def perform(context: Context) {
@@ -50,7 +50,7 @@ extends PlotCommand(args: _*) {
 
 abstract class PlotReporter(returnType: Int, args: Int*)
 extends Reporter with PlotHelpers {
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = args.toList,
       ret = returnType)

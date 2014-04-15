@@ -12,7 +12,7 @@ class _turtleorlinkvariableof(_varName: String) extends Reporter {
   override def toString =
     super.toString + ":" + varName
 
-  override def syntax =
+  override def syntax2 =
     Syntax.reporterSyntax(
       right = List(Syntax.LinkType | Syntax.LinksetType | Syntax.TurtleType | Syntax.TurtlesetType),
       ret = Syntax.WildcardType)

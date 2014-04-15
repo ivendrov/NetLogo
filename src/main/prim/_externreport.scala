@@ -6,7 +6,7 @@ import org.nlogo.{ api, nvm }
 
 class _externreport(reporter: api.Reporter) extends nvm.Reporter {
 
-  override def syntax = reporter.getSyntax
+  override def syntax2 = reporter.getSyntax
 
   override def report(context: nvm.Context): AnyRef = {
     val arguments = Array.tabulate[api.Argument](args.length)(i =>
