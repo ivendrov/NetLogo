@@ -45,6 +45,9 @@ class Backifier(
   def apply(r: core.Reporter): nvm.Reporter = {
     val result = r match {
 
+      case core.prim._const(value) =>
+        new prim._const(value)
+
       case core.prim._externreport(_) =>
         new prim._externreport(
           extensionManager.replaceIdentifier(r.token.text.toUpperCase)

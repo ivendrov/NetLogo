@@ -8,35 +8,23 @@ package org.nlogo.compile.front
 // are added to tokens.txt.) - ST 12/5/09
 
 import org.scalatest.FunSuite
-import org.nlogo.{ core, nvm, api }
-
-// so we can use a structural type so we can use this to check both
-// prim and core.prim. eventually this won't be necessary anymore,
-// but for now the creation of core.prim is still wip. - ST 4/7/14
-import scala.language.reflectiveCalls
+import org.nlogo.core.Instruction
 
 class TestAllSyntaxes extends FunSuite {
-  type HasSyntax = { def syntax: core.Syntax }
   def shorten(name: String) =
     Class.forName(name).getSimpleName
-  def instruction[T <: HasSyntax](name: String) =
-    Class.forName(name).newInstance().asInstanceOf[T]
-  def entry[T <: HasSyntax](name: String) =
-    shorten(name) + " " + instruction[T](name).syntax.dump
-  def doTest[T <: HasSyntax](classNames: Set[String], expected: String) {
+  def instruction(name: String) =
+    Class.forName(name).newInstance().asInstanceOf[Instruction]
+  def entry(name: String) =
+    shorten(name) + " " + instruction(name).syntax.dump
+  def doTest(classNames: Set[String], expected: String) {
     assertResult(expected)(
-      classNames.toSeq.sortBy(shorten).map(entry[T]).mkString("\n"))
+      classNames.toSeq.sortBy(shorten).map(entry).mkString("\n"))
   }
-  def testAllPrims[T <: HasSyntax](prefix: String) {
-    val tokenMapper = new org.nlogo.parse.TokenMapper(
-      "/system/tokens.txt", prefix)
-    val c = tokenMapper.allCommandClassNames
-    val r = tokenMapper.allReporterClassNames
-    test(s"commands in $prefix") { doTest(c, COMMANDS) }
-    test(s"reporters in $prefix") { doTest(r, REPORTERS) }
-  }
-  testAllPrims[nvm.Instruction]("org.nlogo.prim.")
-  testAllPrims[core.Instruction]("org.nlogo.core.prim.")
+  val c = FrontEnd.tokenMapper.allCommandClassNames
+  val r = FrontEnd.tokenMapper.allReporterClassNames
+  test("commands") { doTest(c, COMMANDS) }
+  test("reporters") { doTest(r, REPORTERS) }
   val REPORTERS = """|_abs number,number,OTPL,null,10,1,1
                      |_acos number,number,OTPL,null,10,1,1
                      |_all agentset/TRUE/FALSE block,TRUE/FALSE,OTPL,?,10,2,2
