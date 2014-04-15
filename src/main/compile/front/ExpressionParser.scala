@@ -8,14 +8,13 @@ import org.nlogo.{ core, api, nvm, parse, prim },
   core.{ Syntax, Token, TokenType },
     Syntax.compatible,
   api.{ LogoList, Nobody },
-  nvm.{ Command, Instruction, Procedure, Reporter},
   parse.LiteralParser
 
 /**
  * Parses procedure bodies.
  */
 
-class ExpressionParser(backifier: Backifier, procedure: Procedure) {
+class ExpressionParser(backifier: Backifier, procedure: nvm.Procedure) {
 
   /**
    * one less than the lowest valid operator precedence. See Syntax.
