@@ -23,7 +23,7 @@ class TaskVisitor extends DefaultAstVisitor {
     super.visitProcedureDefinition(procdef)
   }
   override def visitReporterApp(expr: ReporterApp) {
-    expr.reporter match {
+    expr.nvmReporter match {
       case l: prim._reportertask =>
         val old = task
         task = Some(l)
@@ -36,15 +36,15 @@ class TaskVisitor extends DefaultAstVisitor {
                     api.I18N.errors.get("compiler.TaskVisitor.notDefined"), expr)
             val formal: api.Let = procedure.get.getTaskFormal(lv.varNumber)
             val plv = new prim._letvariable
-            expr.reporter = plv
+            expr.nvmReporter = plv
             plv.let = formal
-            expr.reporter.token = lv.token
+            expr.nvmReporter.token = lv.token
           case Some(l: prim._reportertask) =>
             val formal: api.Let = l.getFormal(lv.varNumber)
             val plv = new prim._letvariable
-            expr.reporter = plv
+            expr.nvmReporter = plv
             plv.let = formal
-            expr.reporter.token = lv.token
+            expr.nvmReporter.token = lv.token
         }
       case _ =>
         super.visitReporterApp(expr)

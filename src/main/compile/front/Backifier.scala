@@ -48,6 +48,9 @@ class Backifier(
       case core.prim._const(value) =>
         new prim._const(value)
 
+      case core.prim._commandtask() =>
+        new prim._commandtask(null)  // LambdaLifter will fill in
+
       case core.prim._externreport(_) =>
         new prim._externreport(
           extensionManager.replaceIdentifier(r.token.text.toUpperCase)

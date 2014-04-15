@@ -32,11 +32,11 @@ class LetVisitor(usedNames: Map[String, String]) extends DefaultAstVisitor {
   }
 
   override def visitStatement(stmt: Statement) {
-    stmt.command match {
+    stmt.nvmCommand match {
       case l: prim._let =>
         val nameToken =
           stmt.args(0).asInstanceOf[ReporterApp]
-            .reporter.token
+            .nvmReporter.token
         val name = nameToken.text.toUpperCase
         for (description <- usedNames.get(name))
           exception(s"There is already a $description called $name",
@@ -53,7 +53,7 @@ class LetVisitor(usedNames: Map[String, String]) extends DefaultAstVisitor {
   }
 
   override def visitReporterApp(expr: ReporterApp) {
-    expr.reporter match {
+    expr.nvmReporter match {
       case l: prim._letvariable if l.let == null =>
         val name = l.token.text.toUpperCase
         Environment.get(name) match {

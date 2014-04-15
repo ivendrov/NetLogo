@@ -58,6 +58,11 @@ case class _carefully() extends Command {
     Syntax.commandSyntax(
       right = List(Syntax.CommandBlockType, Syntax.CommandBlockType))
 }
+case class _commandtask() extends Reporter {
+  override def syntax =
+    Syntax.reporterSyntax(
+      ret = Syntax.CommandTaskType)
+}
 case class _const(value: AnyRef) extends Reporter {
   override def syntax =
     Syntax.reporterSyntax(
@@ -297,6 +302,11 @@ case class _repeat() extends Command {
   override def syntax =
     Syntax.commandSyntax(
       right = List(Syntax.NumberType, Syntax.CommandBlockType))
+}
+case class _reportertask() extends Reporter {
+  override def syntax =
+    Syntax.reporterSyntax(
+      ret = Syntax.ReporterTaskType)
 }
 case class _return() extends Command {
   override def syntax =

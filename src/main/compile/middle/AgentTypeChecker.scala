@@ -93,7 +93,7 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
     // visitStatement and visitReporterApp are clones of each other
 
     override def visitStatement(stmt: Statement) {
-      val c = stmt.command
+      val c = stmt.nvmCommand
       agentClassString = typeCheck(currentProcedure, c, agentClassString)
       if(c.syntax2.blockAgentClassString != null)
         chooseVisitorAndContinue(c.syntax2.blockAgentClassString, stmt.args)
@@ -104,7 +104,7 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
 
     // visitStatement and visitReporterApp are clones of each other
     override def visitReporterApp(app: ReporterApp) {
-      val r = app.reporter
+      val r = app.nvmReporter
       agentClassString = typeCheck(currentProcedure, r, agentClassString)
       if(r.isInstanceOf[_task])
         app.args.head.accept(new AgentTypeCheckerVisitor(currentProcedure, "OTPL"))
@@ -131,7 +131,7 @@ class AgentTypeChecker(defs: Seq[ProcedureDefinition]) {
     }
 
     def getReportedAgentType(app: ReporterApp): String = {
-      app.reporter.syntax2.ret match {
+      app.nvmReporter.syntax2.ret match {
         case Syntax.TurtleType | Syntax.TurtlesetType => "-T--"
         case Syntax.PatchType  | Syntax.PatchsetType  => "--P-"
         case Syntax.LinkType   | Syntax.LinksetType   => "---L"
