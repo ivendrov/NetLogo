@@ -170,7 +170,7 @@ class FrontEndTests extends FunSuite {
   }
   test("ParseDiffuse") {
     runTest("diffuse pcolor 1",
-      "_diffuse[_reference:Patch,2[], _const:1[]]")
+      "_diffuse[_patchvariable:2[], _const:1[]]")
   }
 
   // in SetBreed2, we are checking that since no singular form of `fish`

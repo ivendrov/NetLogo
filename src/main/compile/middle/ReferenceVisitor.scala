@@ -3,19 +3,21 @@
 package org.nlogo.compile
 package middle
 
-import org.nlogo.{ core, prim }
+import org.nlogo.core
+import Fail._
 
 class ReferenceVisitor extends DefaultAstVisitor {
   override def visitStatement(stmt: Statement) {
     super.visitStatement(stmt)
     val index = stmt.nvmCommand.syntax2.right.indexWhere(_ == core.Syntax.ReferenceType)
-    // at present the GIS extension is expecting its _reference arguments not to
-    // be removed, so exempt _extern - ST 2/15/11
-    if(index != -1 && !stmt.nvmCommand.isInstanceOf[prim._extern]) {
-      stmt.nvmCommand.reference =
-        stmt.args(index).asInstanceOf[ReporterApp].nvmReporter
-          .asInstanceOf[prim._reference].reference
-      stmt.removeArgument(index)
+    if(index != -1) {
+      stmt.args(index).asInstanceOf[ReporterApp].coreReporter match {
+        case referenceable: core.Referenceable =>
+          stmt.nvmCommand.reference = referenceable.makeReference
+          stmt.removeArgument(index)
+        case _ =>
+          exception("Expected a patch variable here.", stmt.args(index))
+      }
     }
   }
 }
