@@ -1,6 +1,6 @@
 val root = project in file (".") configs(FastMediumSlow.configs: _*)
 
-scalaVersion := "2.11.0-RC4"
+scalaVersion := "2.11.0"
 
 mainClass in Compile := Some("org.nlogo.headless.Main")
 
@@ -47,7 +47,8 @@ libraryDependencies ++= Seq(
   "org.jmock" % "jmock-legacy" % "2.5.1" % "test",
   "org.jmock" % "jmock-junit4" % "2.5.1" % "test",
   "org.scalacheck" %% "scalacheck" % "1.11.3" % "test",
-  "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+  // replace with %% "scalatest" once a build is available - ST 4/17/14
+  "org.scalatest" % "scalatest_2.11.0-RC4" % "2.1.3" % "test"
 )
 
 // reflections depends on some extra jars but for some reason we need to
