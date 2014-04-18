@@ -362,27 +362,9 @@ class ExpressionParser(backifier: Backifier, procedure: nvm.Procedure) {
             case _ =>
               sys.error("unexpected token type: " + token.tpe)
           }
-          // handle the case of the concise task syntax, where I can write e.g. "map + ..." instead
-          // of "map [?1 + ?2] ...".  for the task primitive itself we allow this even for literals
-          // and nullary reporters, for the other primitives like map we require the reporter to
-          // take at least one input (since otherwise a simple "map f xs" wouldn't evaluate f).  the
-          // !variadic check is to prevent "map (f a) ..." from being misparsed.
-          if (wantReporterTask && !variadic && (wantAnyTask || syntax.totalDefault > 0)) {
-            val task = new core.prim._reportertask
-            task.token = reporter.token
-            val taskApp =
-              new ReporterApp(task, backifier(task),
-                reporter.token.start, reporter.token.end, reporter.token.filename)
-            taskApp.addArgument(rApp)
-            for(argNumber <- 1 to syntax.totalDefault) {
-              val lv = new prim._taskvariable(argNumber)
-              lv.token = reporter.token
-              rApp.addArgument(
-                new ReporterApp(coreReporter, lv,
-                  reporter.token.start, reporter.token.end, reporter.token.filename))
-            }
-            taskApp
-          }
+          // the !variadic check is to prevent "map (f a) ..." from being misparsed.
+          if (wantReporterTask && !variadic && (wantAnyTask || syntax.totalDefault > 0))
+            expandConciseReporterTask(rApp, coreReporter)
           // the normal case
           else {
             if (variadic && syntax.isVariadic)
@@ -391,41 +373,67 @@ class ExpressionParser(backifier: Backifier, procedure: nvm.Procedure) {
               parseArguments(syntax, rApp, tokens)
             rApp
           }
-        // handle the case of the concise task syntax, where I can write e.g. "foreach xs print"
-        // instead of "foreach xs [ print ? ]"
         case TokenType.Command if wantCommandTask =>
           tokens.next()
-          val coreCommand = token.value.asInstanceOf[core.Command]
-          val stmt = new Statement(coreCommand, backifier(coreCommand),
-            token.start, token.end, token.filename)
-          val task = new core.prim._commandtask
-          task.token = token
-          for(argNumber <- 1 to coreCommand.syntax.totalDefault) {
-            val lv = new core.prim._taskvariable(argNumber)
-            lv.token = token
-            stmt.addArgument(new ReporterApp(lv, backifier(lv), token.start, token.end, token.filename))
-          }
-          if (coreCommand.syntax.takesOptionalCommandBlock)
-            // synthesize an empty block so that later phases of compilation will be dealing with a
-            // consistent number of arguments - ST 3/4/08
-            stmt.addArgument(
-              new CommandBlock(
-                new Statements(token.filename),
-                token.start, token.end, token.filename))
-          val stmts = new Statements(token.filename)
-          stmts.addStatement(stmt)
-          val rapp =
-            new ReporterApp(task, backifier(task), token.start, token.end, token.filename)
-          rapp.addArgument(
-            new CommandBlock(
-              stmts, token.start, token.end, token.filename))
-          rapp
+          expandConciseCommandTask(token)
         case _ =>
           // here we throw a temporary exception, since we don't know yet what this error means... It
           // generally either means MissingInputOnRight or ExpectedReporter.
           throw new UnexpectedTokenException(token)
       }
     parseMore(expr, tokens, precedence)
+  }
+
+  /**
+    * handle the case of the concise task syntax, where I can write e.g. "map + ..." instead
+    * of "map [?1 + ?2] ...".  for the task primitive itself we allow this even for literals
+    *  and nullary reporters, for the other primitives like map we require the reporter to
+    *  take at least one input (since otherwise a simple "map f xs" wouldn't evaluate f).
+    */
+  private def expandConciseReporterTask(rApp: ReporterApp, reporter: core.Reporter): ReporterApp = {
+    val task = new core.prim._reportertask
+    task.token = reporter.token
+    val taskApp =
+      new ReporterApp(task, backifier(task),
+        reporter.token.start, reporter.token.end, reporter.token.filename)
+    taskApp.addArgument(rApp)
+    for(argNumber <- 1 to reporter.syntax.totalDefault) {
+      val lv = new prim._taskvariable(argNumber)
+      lv.token = reporter.token
+      rApp.addArgument(
+        new ReporterApp(reporter, lv,
+          reporter.token.start, reporter.token.end, reporter.token.filename))
+    }
+    taskApp
+  }
+
+  // expand e.g. "foreach xs print" -> "foreach xs [ print ? ]"
+  private def expandConciseCommandTask(token: Token): ReporterApp = {
+    val coreCommand = token.value.asInstanceOf[core.Command]
+    val stmt = new Statement(coreCommand, backifier(coreCommand),
+      token.start, token.end, token.filename)
+    val task = new core.prim._commandtask
+    task.token = token
+    for(argNumber <- 1 to coreCommand.syntax.totalDefault) {
+      val lv = new core.prim._taskvariable(argNumber)
+      lv.token = token
+      stmt.addArgument(new ReporterApp(lv, backifier(lv), token.start, token.end, token.filename))
+    }
+    if (coreCommand.syntax.takesOptionalCommandBlock)
+      // synthesize an empty block so that later phases of compilation will be dealing with a
+      // consistent number of arguments - ST 3/4/08
+      stmt.addArgument(
+        new CommandBlock(
+          new Statements(token.filename),
+          token.start, token.end, token.filename))
+    val stmts = new Statements(token.filename)
+    stmts.addStatement(stmt)
+    val rapp =
+      new ReporterApp(task, backifier(task), token.start, token.end, token.filename)
+    rapp.addArgument(
+      new CommandBlock(
+        stmts, token.start, token.end, token.filename))
+    rapp
   }
 
   /**
