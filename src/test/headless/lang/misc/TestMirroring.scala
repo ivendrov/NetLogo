@@ -5,7 +5,8 @@ package lang
 package misc
 
 import org.scalatest.exceptions.TestFailedException
-import org.nlogo.{ core, api }, api.AgentVariables
+import org.nlogo.api, api.{ AgentVariables, AgentVariableNumbers }
+import org.nlogo.core._
 import org.nlogo.mirror._, Mirroring._, Mirrorables._
 
 class TestMirroring extends FixtureSuite {
@@ -39,7 +40,7 @@ class TestMirroring extends FixtureSuite {
   test("init") { implicit fixture =>
     import fixture.{ workspace => ws }
 
-    ModelCreator.open(ws, core.WorldDimensions.square(1))
+    ws.openModel(Model(widgets = List(View.square(1))))
     val (m0, u0) = diffs(Map(), mirrorables)
     // 9 patches + world + observer = 11 objects, 11 births
     assertResult((11, (11, 0, 0))) { (m0.size, sizes(u0)) }
@@ -87,7 +88,7 @@ class TestMirroring extends FixtureSuite {
       "patches-own [pfoo] " +
         "turtles-own [tfoo] " +
         "links-own   [lfoo]"
-    ModelCreator.open(ws, core.WorldDimensions.square(1), declarations)
+    ws.openModel(Model(code = declarations, widgets = List(View.square(1))))
     ws.command("create-turtles 3 [ create-links-with other turtles ]")
     val (m0, u0) = diffs(Map(), mirrorables)
     // 9 patches + 3 turtles + 3 links + world + observer = 17 objects
@@ -104,7 +105,7 @@ class TestMirroring extends FixtureSuite {
 
   test("merge") { implicit fixture =>
     import fixture.{ workspace => ws }
-    ModelCreator.open(ws, core.WorldDimensions.square(1))
+    ws.openModel(Model(widgets = List(View.square(1))))
     val (m0, u0) = diffs(Map(), mirrorables)
     var state: State = Mirroring.merge(Map(), u0)
     checkAllAgents(m0)
@@ -134,7 +135,7 @@ class TestMirroring extends FixtureSuite {
 
   test("tick counter") { implicit fixture =>
     import fixture.{ workspace => ws }
-    ModelCreator.open(ws, core.WorldDimensions.square(0))
+    ws.openModel(Model())
     val (m0, u0) = diffs(Map(), mirrorables)
     val state: State = Mirroring.merge(Map(), u0)
     // 1 patch + world + observer = 3 objects
@@ -149,6 +150,31 @@ class TestMirroring extends FixtureSuite {
     val (m2, u2) = diffs(m1, mirrorables)
     assertResult((3, (0, 0, 1))) { (m2.size, sizes(u2)) }
     assertResult(1.1)(m2(AgentKey(World, 0))(Mirrorables.World.Variables.Ticks.id))
+  }
+
+  test("labels are mirrored as strings") { implicit fixture =>
+    import fixture.{ workspace => ws }
+    ws.openModel(Model(widgets = List(View.square(0))))
+    val (m0, u0) = diffs(Map(), mirrorables)
+    ws.command("ask one-of patches [ set plabel self ]")
+    val (m1, u1) = diffs(m0, mirrorables)
+    assertResult(Change(AgentVariableNumbers.VAR_PLABEL, "(patch 0 0)")) {
+      u1.changes(1)._2.head
+    }
+    ws.command("crt 1")
+    val (m2, u2) = diffs(m1, mirrorables)
+    ws.command("ask turtle 0 [ set label self ]")
+    val (m3, u3) = diffs(m2, mirrorables)
+    assertResult(Change(AgentVariableNumbers.VAR_LABEL, "(turtle 0)")) {
+      u3.changes(0)._2.head
+    }
+    ws.command("crt 1 [ create-link-with turtle 0 ]")
+    val (m4, u4) = diffs(m3, mirrorables)
+    ws.command("ask links [ set label self ]")
+    val (m5, u5) = diffs(m4, mirrorables)
+    assertResult(Change(AgentVariableNumbers.VAR_LLABEL, "(link 0 1)")) {
+      u5.changes(0)._2.head
+    }
   }
 
 }
